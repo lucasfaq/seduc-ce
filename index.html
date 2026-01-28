@@ -1,1 +1,3191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5b0538be1da729b1031b7e7cbdc450d8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
 
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5b0538be1da729b1031b7e7cbdc450d8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5b0538be1da729b1031b7e7cbdc450d8 = L.map(
+                "map_5b0538be1da729b1031b7e7cbdc450d8",
+                {
+                    center: [-5.2, -39.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c08deda8985d46d080ab87869e6569b0 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c08deda8985d46d080ab87869e6569b0.addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var measure_control_240027feeef373668fae1a535af53594 = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_5b0538be1da729b1031b7e7cbdc450d8.addControl(measure_control_240027feeef373668fae1a535af53594);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var marker_ad2ae50f2c418d579cf16b50cf22f66a = L.marker(
+                [-3.8135616, -38.5124547],
+                {
+}
+            ).addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var icon_5f14e53e61b46e3d0f366ecd0c443dde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_022dbf02ae1d4aed28981f30174dfe85 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6f55350cd95755eb8bce83402362369 = $(`<div id="html_b6f55350cd95755eb8bce83402362369" style="width: 100.0%; height: 100.0%;">Fábrica (origem logística)</div>`)[0];
+                popup_022dbf02ae1d4aed28981f30174dfe85.setContent(html_b6f55350cd95755eb8bce83402362369);
+            
+        
+
+        marker_ad2ae50f2c418d579cf16b50cf22f66a.bindPopup(popup_022dbf02ae1d4aed28981f30174dfe85)
+        ;
+
+        
+    
+    
+            marker_ad2ae50f2c418d579cf16b50cf22f66a.bindTooltip(
+                `<div>
+                     Fábrica (origem logística)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ad2ae50f2c418d579cf16b50cf22f66a.setIcon(icon_5f14e53e61b46e3d0f366ecd0c443dde);
+            
+    
+            var feature_group_34ede98b2e64fe426a01157b1348abae = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_ce011e2ada7de97a1098e01d44df0bb9 = L.circleMarker(
+                [-2.9191736, -39.9242064],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_34ede98b2e64fe426a01157b1348abae);
+        
+    
+        var popup_492f4e2d664b8659c6ed4c0c121708fa = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_ced7a700a7be6413a22896449cc4220e = $(`<div id="html_ced7a700a7be6413a22896449cc4220e" style="width: 100.0%; height: 100.0%;">         <b>EEM Luzia Araújo Barros</b><br>         Município: Itarema<br>         Descrição: Cozinha<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: 1.0 | Qtd Sala 3: nan | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>185.5 km</b><br>         <a href="https://maps.app.goo.gl/oH3GecsuNGLkgoB46" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_492f4e2d664b8659c6ed4c0c121708fa.setContent(html_ced7a700a7be6413a22896449cc4220e);
+            
+        
+
+        circle_marker_ce011e2ada7de97a1098e01d44df0bb9.bindPopup(popup_492f4e2d664b8659c6ed4c0c121708fa)
+        ;
+
+        
+    
+    
+            circle_marker_ce011e2ada7de97a1098e01d44df0bb9.bindTooltip(
+                `<div>
+                     EEM Luzia Araújo Barros (Itarema)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_34ede98b2e64fe426a01157b1348abae.addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var feature_group_aa4e282c138e8b3fc07a3b68a4960710 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_458be5440fd4aca8c711372a7a9be601 = L.circleMarker(
+                [-2.8855945, -40.1200317],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_aa4e282c138e8b3fc07a3b68a4960710);
+        
+    
+        var popup_9dc29bf956b8a334d99c47cb294e1931 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_73d71ef1eb61e70c47f227ff5ea0824a = $(`<div id="html_73d71ef1eb61e70c47f227ff5ea0824a" style="width: 100.0%; height: 100.0%;">         <b>EEM Tomaz Pompeu de Sousa Brasil</b><br>         Município: Acaraú<br>         Descrição: Sala De Aula 3<br>         Prioridade: <b>P4</b><br>         Módulos: 6<br>         Qtd Cozinha: nan | Qtd Sala 3: 2.0 | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>206.0 km</b><br>         <a href="https://maps.app.goo.gl/V5MJzEiwDjwQxaci6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_9dc29bf956b8a334d99c47cb294e1931.setContent(html_73d71ef1eb61e70c47f227ff5ea0824a);
+            
+        
+
+        circle_marker_458be5440fd4aca8c711372a7a9be601.bindPopup(popup_9dc29bf956b8a334d99c47cb294e1931)
+        ;
+
+        
+    
+    
+            circle_marker_458be5440fd4aca8c711372a7a9be601.bindTooltip(
+                `<div>
+                     EEM Tomaz Pompeu de Sousa Brasil (Acaraú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_aa4e282c138e8b3fc07a3b68a4960710.addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var feature_group_ea512e2af74f1a5b050b59e92845be2b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_799fdc19e0edb64450d91eed27e75083 = L.circleMarker(
+                [-2.8957283, -40.4492017],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ea512e2af74f1a5b050b59e92845be2b);
+        
+    
+        var popup_454393aaf84d4a09923819ba7cb80fc1 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_1ef9ffe172d79dc046b72fdf8d23b3b9 = $(`<div id="html_1ef9ffe172d79dc046b72fdf8d23b3b9" style="width: 100.0%; height: 100.0%;">         <b>EEM José Teixeira de Albuquerquer</b><br>         Município: Jijoca de Jericoacoara<br>         Descrição: Sala De Aula 3 + Cozinha<br>         Prioridade: <b>P5</b><br>         Módulos: 13<br>         Qtd Cozinha: 1.0 | Qtd Sala 3: 3.0 | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>238.0 km</b><br>         <a href="https://maps.app.goo.gl/zt2Yez2JycvMZhSy9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_454393aaf84d4a09923819ba7cb80fc1.setContent(html_1ef9ffe172d79dc046b72fdf8d23b3b9);
+            
+        
+
+        circle_marker_799fdc19e0edb64450d91eed27e75083.bindPopup(popup_454393aaf84d4a09923819ba7cb80fc1)
+        ;
+
+        
+    
+    
+            circle_marker_799fdc19e0edb64450d91eed27e75083.bindTooltip(
+                `<div>
+                     EEM José Teixeira de Albuquerquer (Jijoca de Jericoacoara)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_ea512e2af74f1a5b050b59e92845be2b.addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var feature_group_ab09e847c75266eb22610adfe2c63acb = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_3f055cf3e5fb6c239194c3ef647dd176 = L.circleMarker(
+                [-6.5679254, -40.1256112],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_72b3d09c6ccc65a0ee87a4a5e41f2adc = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_408a15fc6f1c342afc34175873268e6c = $(`<div id="html_408a15fc6f1c342afc34175873268e6c" style="width: 100.0%; height: 100.0%;">         <b>EEM José Ferreira Barbosa</b><br>         Município: Aiuaba<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>353.2 km</b><br>         <a href="https://maps.app.goo.gl/CahYckGKaLYf556z8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_72b3d09c6ccc65a0ee87a4a5e41f2adc.setContent(html_408a15fc6f1c342afc34175873268e6c);
+            
+        
+
+        circle_marker_3f055cf3e5fb6c239194c3ef647dd176.bindPopup(popup_72b3d09c6ccc65a0ee87a4a5e41f2adc)
+        ;
+
+        
+    
+    
+            circle_marker_3f055cf3e5fb6c239194c3ef647dd176.bindTooltip(
+                `<div>
+                     EEM José Ferreira Barbosa (Aiuaba)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b7ffc956fbd0fc4f256b2a9a3bfbc74 = L.circleMarker(
+                [-3.3637455, -39.8442296],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_43eed6d2d6111db04571eb363420edd2 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_88ac80de19c0968016c47d5f257ddce9 = $(`<div id="html_88ac80de19c0968016c47d5f257ddce9" style="width: 100.0%; height: 100.0%;">         <b>EEEP Luiz Gonzaga F Mota</b><br>         Município: Amontada<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>156.1 km</b><br>         <a href="https://maps.app.goo.gl/9Vecd5tyMwtZ6hgW8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_43eed6d2d6111db04571eb363420edd2.setContent(html_88ac80de19c0968016c47d5f257ddce9);
+            
+        
+
+        circle_marker_4b7ffc956fbd0fc4f256b2a9a3bfbc74.bindPopup(popup_43eed6d2d6111db04571eb363420edd2)
+        ;
+
+        
+    
+    
+            circle_marker_4b7ffc956fbd0fc4f256b2a9a3bfbc74.bindTooltip(
+                `<div>
+                     EEEP Luiz Gonzaga F Mota (Amontada)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_98cada5cd9fc04b8966344f224004a0c = L.circleMarker(
+                [-4.1150528, -38.2452404],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_e47658a14b809558ee2f6904bc8617e0 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_bb057af8500e6dc35ede5508e364b432 = $(`<div id="html_bb057af8500e6dc35ede5508e364b432" style="width: 100.0%; height: 100.0%;">         <b>EEMTI Marconi Coelho Reis</b><br>         Município: Cascavel<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>44.6 km</b><br>         <a href="https://maps.app.goo.gl/ZDmre4oFz4TDWAMZ9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_e47658a14b809558ee2f6904bc8617e0.setContent(html_bb057af8500e6dc35ede5508e364b432);
+            
+        
+
+        circle_marker_98cada5cd9fc04b8966344f224004a0c.bindPopup(popup_e47658a14b809558ee2f6904bc8617e0)
+        ;
+
+        
+    
+    
+            circle_marker_98cada5cd9fc04b8966344f224004a0c.bindTooltip(
+                `<div>
+                     EEMTI Marconi Coelho Reis (Cascavel)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_17b408ea1d9279882470492c0523939f = L.circleMarker(
+                [-3.76585, -38.6572633],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_bfb731946cb49a2fb4a7e3f3a3cccc13 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_75edfc3290aa67620857b6afafc17ba2 = $(`<div id="html_75edfc3290aa67620857b6afafc17ba2" style="width: 100.0%; height: 100.0%;">         <b>EEM Eliezer de Freitas Guimarães</b><br>         Município: Caucaia<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>16.9 km</b><br>         <a href="https://maps.app.goo.gl/i99anLnaJNjFfQmE8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_bfb731946cb49a2fb4a7e3f3a3cccc13.setContent(html_75edfc3290aa67620857b6afafc17ba2);
+            
+        
+
+        circle_marker_17b408ea1d9279882470492c0523939f.bindPopup(popup_bfb731946cb49a2fb4a7e3f3a3cccc13)
+        ;
+
+        
+    
+    
+            circle_marker_17b408ea1d9279882470492c0523939f.bindTooltip(
+                `<div>
+                     EEM Eliezer de Freitas Guimarães (Caucaia)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97233e738100ea78fb7efa3789c2ed8e = L.circleMarker(
+                [-4.4228877, -41.2257127],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_009c38f11c83e2726164d506fafb6719 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c516d594e7015c3b6cd8b78196bbf983 = $(`<div id="html_c516d594e7015c3b6cd8b78196bbf983" style="width: 100.0%; height: 100.0%;">         <b>ESCOLA Quilombola Maria da Conceição</b><br>         Município: Croatá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>308.7 km</b><br>         <a href="https://maps.app.goo.gl/41rqMZ9hcdD3pE7g7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_009c38f11c83e2726164d506fafb6719.setContent(html_c516d594e7015c3b6cd8b78196bbf983);
+            
+        
+
+        circle_marker_97233e738100ea78fb7efa3789c2ed8e.bindPopup(popup_009c38f11c83e2726164d506fafb6719)
+        ;
+
+        
+    
+    
+            circle_marker_97233e738100ea78fb7efa3789c2ed8e.bindTooltip(
+                `<div>
+                     ESCOLA Quilombola Maria da Conceição (Croatá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cbe5486669d4bfb4adfe0506a42f7e32 = L.circleMarker(
+                [-3.8897901, -38.4582151],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_f2ed04b2790adcd54b9045058b2e2586 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_052dd2099cf6ae03bc56130a25757aeb = $(`<div id="html_052dd2099cf6ae03bc56130a25757aeb" style="width: 100.0%; height: 100.0%;">         <b>EEM Ana Bezerra de Sá</b><br>         Município: Eusébio<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>10.4 km</b><br>         <a href="https://maps.app.goo.gl/sZu1yKV2T3sLehwQ7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_f2ed04b2790adcd54b9045058b2e2586.setContent(html_052dd2099cf6ae03bc56130a25757aeb);
+            
+        
+
+        circle_marker_cbe5486669d4bfb4adfe0506a42f7e32.bindPopup(popup_f2ed04b2790adcd54b9045058b2e2586)
+        ;
+
+        
+    
+    
+            circle_marker_cbe5486669d4bfb4adfe0506a42f7e32.bindTooltip(
+                `<div>
+                     EEM Ana Bezerra de Sá (Eusébio)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_83870c6390ea1e554d0abbb9ffc85ea4 = L.circleMarker(
+                [-3.8343151, -38.5606602],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_22e317ad65913c79327f2594229ff09e = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_32832217f7fbf134815fe5a6e000b5ae = $(`<div id="html_32832217f7fbf134815fe5a6e000b5ae" style="width: 100.0%; height: 100.0%;">         <b>EEEP Prof Onelio Porto</b><br>         Município: Fortaleza<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>5.8 km</b><br>         <a href="https://maps.app.goo.gl/UDGLjdLvacXadzKR8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_22e317ad65913c79327f2594229ff09e.setContent(html_32832217f7fbf134815fe5a6e000b5ae);
+            
+        
+
+        circle_marker_83870c6390ea1e554d0abbb9ffc85ea4.bindPopup(popup_22e317ad65913c79327f2594229ff09e)
+        ;
+
+        
+    
+    
+            circle_marker_83870c6390ea1e554d0abbb9ffc85ea4.bindTooltip(
+                `<div>
+                     EEEP Prof Onelio Porto (Fortaleza)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e8904ef0a9672c5aab39f843e192d277 = L.circleMarker(
+                [-3.7856797, -38.6129065],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_c6091255fcbf4f644b708f482a92459d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_6ac11c9150670cf422039e458727d924 = $(`<div id="html_6ac11c9150670cf422039e458727d924" style="width: 100.0%; height: 100.0%;">         <b>EEEP Icaro de Sousa Moreira</b><br>         Município: Fortaleza<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>11.6 km</b><br>         <a href="https://maps.app.goo.gl/UZ5hJzXVB8iTxW6n8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_c6091255fcbf4f644b708f482a92459d.setContent(html_6ac11c9150670cf422039e458727d924);
+            
+        
+
+        circle_marker_e8904ef0a9672c5aab39f843e192d277.bindPopup(popup_c6091255fcbf4f644b708f482a92459d)
+        ;
+
+        
+    
+    
+            circle_marker_e8904ef0a9672c5aab39f843e192d277.bindTooltip(
+                `<div>
+                     EEEP Icaro de Sousa Moreira (Fortaleza)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5647411f5d793554c25b181ad0969917 = L.circleMarker(
+                [-4.4709603, -37.800832],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_491202cdec8f82e07c255d29a98a0ab8 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_a1f01e3818fccb275d8567e5865d0d8a = $(`<div id="html_a1f01e3818fccb275d8567e5865d0d8a" style="width: 100.0%; height: 100.0%;">         <b>EEM Helenita Lopes Gurgel Valente</b><br>         Município: Fortim<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>107.4 km</b><br>         <a href="https://maps.app.goo.gl/LmmRfM5C5YDXbPbX8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_491202cdec8f82e07c255d29a98a0ab8.setContent(html_a1f01e3818fccb275d8567e5865d0d8a);
+            
+        
+
+        circle_marker_5647411f5d793554c25b181ad0969917.bindPopup(popup_491202cdec8f82e07c255d29a98a0ab8)
+        ;
+
+        
+    
+    
+            circle_marker_5647411f5d793554c25b181ad0969917.bindTooltip(
+                `<div>
+                     EEM Helenita Lopes Gurgel Valente (Fortim)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e4883367d3c166e49a464e745d0e59bc = L.circleMarker(
+                [-3.6876938, -39.582888],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_1ba76ec73c2bc15befd938c6756e02a2 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_08628c77601175276634d4ac6a9b7f58 = $(`<div id="html_08628c77601175276634d4ac6a9b7f58" style="width: 100.0%; height: 100.0%;">         <b>EEMTI Estefânia Matos</b><br>         Município: Itapajé<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>119.7 km</b><br>         <a href="https://maps.app.goo.gl/Kss5XcHm1jRVCPGK7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_1ba76ec73c2bc15befd938c6756e02a2.setContent(html_08628c77601175276634d4ac6a9b7f58);
+            
+        
+
+        circle_marker_e4883367d3c166e49a464e745d0e59bc.bindPopup(popup_1ba76ec73c2bc15befd938c6756e02a2)
+        ;
+
+        
+    
+    
+            circle_marker_e4883367d3c166e49a464e745d0e59bc.bindTooltip(
+                `<div>
+                     EEMTI Estefânia Matos (Itapajé)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1eff9b8db02895ed81c42ebbf560f668 = L.circleMarker(
+                [-3.8755953, -38.6314393],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_262a3dcbf0b0f65dc5d77c55ab44436e = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c6a29780ce92b1182c3f28bb16634653 = $(`<div id="html_c6a29780ce92b1182c3f28bb16634653" style="width: 100.0%; height: 100.0%;">         <b>LICEU Professor Francisco Oscar Rodrigues</b><br>         Município: Maracanaú<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>14.9 km</b><br>         <a href="https://maps.app.goo.gl/KTvFCU6ioaYjx4jF8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_262a3dcbf0b0f65dc5d77c55ab44436e.setContent(html_c6a29780ce92b1182c3f28bb16634653);
+            
+        
+
+        circle_marker_1eff9b8db02895ed81c42ebbf560f668.bindPopup(popup_262a3dcbf0b0f65dc5d77c55ab44436e)
+        ;
+
+        
+    
+    
+            circle_marker_1eff9b8db02895ed81c42ebbf560f668.bindTooltip(
+                `<div>
+                     LICEU Professor Francisco Oscar Rodrigues (Maracanaú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d0533bc90b03b15e79750ce40426fa8d = L.circleMarker(
+                [-3.8491826, -38.616303],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_b2cbcee447929acf0deb0ff148277536 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_dd17bcb0d2abe3bf4974271909de7371 = $(`<div id="html_dd17bcb0d2abe3bf4974271909de7371" style="width: 100.0%; height: 100.0%;">         <b>EEM Jose Milton de Vasconcelos Dias</b><br>         Município: Maracanaú<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>12.2 km</b><br>         <a href="https://maps.app.goo.gl/chi3TzCEsoUz75p39" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_b2cbcee447929acf0deb0ff148277536.setContent(html_dd17bcb0d2abe3bf4974271909de7371);
+            
+        
+
+        circle_marker_d0533bc90b03b15e79750ce40426fa8d.bindPopup(popup_b2cbcee447929acf0deb0ff148277536)
+        ;
+
+        
+    
+    
+            circle_marker_d0533bc90b03b15e79750ce40426fa8d.bindTooltip(
+                `<div>
+                     EEM Jose Milton de Vasconcelos Dias (Maracanaú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3d03ec5c69a8925bc6c3e62346b74a5f = L.circleMarker(
+                [-3.9497417, -38.6957587],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_cf61ac4309581c6b54c62beaad1db9d7 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_69485c1a6ed3ce12972bf4ec9cc9d2d3 = $(`<div id="html_69485c1a6ed3ce12972bf4ec9cc9d2d3" style="width: 100.0%; height: 100.0%;">         <b>EEFM Luiz Girão</b><br>         Município: Maranguape<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>25.3 km</b><br>         <a href="https://maps.app.goo.gl/Nk6zi87Zes95sUAZA" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_cf61ac4309581c6b54c62beaad1db9d7.setContent(html_69485c1a6ed3ce12972bf4ec9cc9d2d3);
+            
+        
+
+        circle_marker_3d03ec5c69a8925bc6c3e62346b74a5f.bindPopup(popup_cf61ac4309581c6b54c62beaad1db9d7)
+        ;
+
+        
+    
+    
+            circle_marker_3d03ec5c69a8925bc6c3e62346b74a5f.bindTooltip(
+                `<div>
+                     EEFM Luiz Girão (Maranguape)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b9a21d64c931b49d04d0ad36ed923a2 = L.circleMarker(
+                [-5.7475755, -39.6345613],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_8b3c62c12288705bad883ecc4a64fc68 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_b754ab5727a26b1c984bb8b27be2456a = $(`<div id="html_b754ab5727a26b1c984bb8b27be2456a" style="width: 100.0%; height: 100.0%;">         <b>EEM Professor Ananias do Amaral Vieira</b><br>         Município: Mombaça<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>247.5 km</b><br>         <a href="https://maps.app.goo.gl/6GgcBJujDvf7wPsy7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_8b3c62c12288705bad883ecc4a64fc68.setContent(html_b754ab5727a26b1c984bb8b27be2456a);
+            
+        
+
+        circle_marker_9b9a21d64c931b49d04d0ad36ed923a2.bindPopup(popup_8b3c62c12288705bad883ecc4a64fc68)
+        ;
+
+        
+    
+    
+            circle_marker_9b9a21d64c931b49d04d0ad36ed923a2.bindTooltip(
+                `<div>
+                     EEM Professor Ananias do Amaral Vieira (Mombaça)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7f1321e8d61343f77ebb2d4e9cf14402 = L.circleMarker(
+                [-4.1832617, -38.4697926],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_02576cd8f40a476d8b8ff0cedf7f765b = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_f911a3021a5ad51ad6ad2a392b0a50c4 = $(`<div id="html_f911a3021a5ad51ad6ad2a392b0a50c4" style="width: 100.0%; height: 100.0%;">         <b>EEM Dione Maria Bezerra Pessoa</b><br>         Município: Pacajus<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>41.2 km</b><br>         <a href="https://maps.app.goo.gl/q5dvjpkvVnF5K99m7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_02576cd8f40a476d8b8ff0cedf7f765b.setContent(html_f911a3021a5ad51ad6ad2a392b0a50c4);
+            
+        
+
+        circle_marker_7f1321e8d61343f77ebb2d4e9cf14402.bindPopup(popup_02576cd8f40a476d8b8ff0cedf7f765b)
+        ;
+
+        
+    
+    
+            circle_marker_7f1321e8d61343f77ebb2d4e9cf14402.bindTooltip(
+                `<div>
+                     EEM Dione Maria Bezerra Pessoa (Pacajus)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c11636de51e93f2848ca494d7ca7e9bc = L.circleMarker(
+                [-3.8865966, -38.608103],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_95392db46846613acda3c779c6ce9184 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_0b50059426b1771483fe2bf8d5ec049d = $(`<div id="html_0b50059426b1771483fe2bf8d5ec049d" style="width: 100.0%; height: 100.0%;">         <b>Escola Fausto Aguiar Arruda</b><br>         Município: Pacatuba<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>13.3 km</b><br>         <a href="https://maps.app.goo.gl/BYYPaL7E8HrUzkXN9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_95392db46846613acda3c779c6ce9184.setContent(html_0b50059426b1771483fe2bf8d5ec049d);
+            
+        
+
+        circle_marker_c11636de51e93f2848ca494d7ca7e9bc.bindPopup(popup_95392db46846613acda3c779c6ce9184)
+        ;
+
+        
+    
+    
+            circle_marker_c11636de51e93f2848ca494d7ca7e9bc.bindTooltip(
+                `<div>
+                     Escola Fausto Aguiar Arruda (Pacatuba)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_62ad345f2df9645751ffe4a88d5a3b3b = L.circleMarker(
+                [-4.9310937, -37.9693284],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_09cb7e8279862775f18eb373b86b272f = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_cf80feef11cda4fc3403f518caddff62 = $(`<div id="html_cf80feef11cda4fc3403f518caddff62" style="width: 100.0%; height: 100.0%;">         <b>EEM Manuel Matoso Filho</b><br>         Município: Russas<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>137.5 km</b><br>         <a href="https://maps.app.goo.gl/Dyh5HweNCuBpojc46" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_09cb7e8279862775f18eb373b86b272f.setContent(html_cf80feef11cda4fc3403f518caddff62);
+            
+        
+
+        circle_marker_62ad345f2df9645751ffe4a88d5a3b3b.bindPopup(popup_09cb7e8279862775f18eb373b86b272f)
+        ;
+
+        
+    
+    
+            circle_marker_62ad345f2df9645751ffe4a88d5a3b3b.bindTooltip(
+                `<div>
+                     EEM Manuel Matoso Filho (Russas)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d3c2c030433d64ce5ebbcea385090c4c = L.circleMarker(
+                [-4.1102331, -40.8741642],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_ffb60313d134a3d31d2a147fcccd12e3 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5da347001ce8926f7c42368fb8ac41d9 = $(`<div id="html_5da347001ce8926f7c42368fb8ac41d9" style="width: 100.0%; height: 100.0%;">         <b>EEM DEP Tomaz Brandão</b><br>         Município: São Benedito<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>264.3 km</b><br>         <a href="https://maps.app.goo.gl/Ppekz2siS488GyWR6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_ffb60313d134a3d31d2a147fcccd12e3.setContent(html_5da347001ce8926f7c42368fb8ac41d9);
+            
+        
+
+        circle_marker_d3c2c030433d64ce5ebbcea385090c4c.bindPopup(popup_ffb60313d134a3d31d2a147fcccd12e3)
+        ;
+
+        
+    
+    
+            circle_marker_d3c2c030433d64ce5ebbcea385090c4c.bindTooltip(
+                `<div>
+                     EEM DEP Tomaz Brandão (São Benedito)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_646d3ac161671c6777fe9590ed7c8790 = L.circleMarker(
+                [-3.3507689, -40.4660099],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_aa8fd24e6351125499905b5c175f4369 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_46c8b1c010db5278216bda5740b50b87 = $(`<div id="html_46c8b1c010db5278216bda5740b50b87" style="width: 100.0%; height: 100.0%;">         <b>EEFM Coronel Apoliano</b><br>         Município: Senador Sá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>223.0 km</b><br>         <a href="https://maps.app.goo.gl/LuYoJJF93knWeg6G6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_aa8fd24e6351125499905b5c175f4369.setContent(html_46c8b1c010db5278216bda5740b50b87);
+            
+        
+
+        circle_marker_646d3ac161671c6777fe9590ed7c8790.bindPopup(popup_aa8fd24e6351125499905b5c175f4369)
+        ;
+
+        
+    
+    
+            circle_marker_646d3ac161671c6777fe9590ed7c8790.bindTooltip(
+                `<div>
+                     EEFM Coronel Apoliano (Senador Sá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5b97161d0a746e6c9900d2c9c41de4c0 = L.circleMarker(
+                [-3.7498318, -40.9367533],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_44f7d7c07fe6fd02cf581f440a63a36d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_a903169b287416c9514c0ad088e256cd = $(`<div id="html_a903169b287416c9514c0ad088e256cd" style="width: 100.0%; height: 100.0%;">         <b>EEM Miguel Carneiro da Cunha</b><br>         Município: Tianguá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>269.4 km</b><br>         <a href="https://maps.app.goo.gl/wahWorNS6casN8UX6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_44f7d7c07fe6fd02cf581f440a63a36d.setContent(html_a903169b287416c9514c0ad088e256cd);
+            
+        
+
+        circle_marker_5b97161d0a746e6c9900d2c9c41de4c0.bindPopup(popup_44f7d7c07fe6fd02cf581f440a63a36d)
+        ;
+
+        
+    
+    
+            circle_marker_5b97161d0a746e6c9900d2c9c41de4c0.bindTooltip(
+                `<div>
+                     EEM Miguel Carneiro da Cunha (Tianguá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_64c347a678a23a5e488972c431bd9df6 = L.circleMarker(
+                [-3.8508156, -40.9163332],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ab09e847c75266eb22610adfe2c63acb);
+        
+    
+        var popup_be8e0b695df761751084254519df7709 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_b3612bded97039861ef257207760d271 = $(`<div id="html_b3612bded97039861ef257207760d271" style="width: 100.0%; height: 100.0%;">         <b>EEEP Gov Waldemar Alcantara</b><br>         Município: Ubajara<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>267.0 km</b><br>         <a href="https://maps.app.goo.gl/oS8Z835yVtPSAzhm8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_be8e0b695df761751084254519df7709.setContent(html_b3612bded97039861ef257207760d271);
+            
+        
+
+        circle_marker_64c347a678a23a5e488972c431bd9df6.bindPopup(popup_be8e0b695df761751084254519df7709)
+        ;
+
+        
+    
+    
+            circle_marker_64c347a678a23a5e488972c431bd9df6.bindTooltip(
+                `<div>
+                     EEEP Gov Waldemar Alcantara (Ubajara)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_ab09e847c75266eb22610adfe2c63acb.addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var feature_group_c4005f7bc8d0b47e5c7e91fa0364f47d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2f370e82f1466d23746797adbc1fedba = L.circleMarker(
+                [-3.1203842, -40.8318086],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c4005f7bc8d0b47e5c7e91fa0364f47d);
+        
+    
+        var popup_069dcfe3dca19a48ab1025e3d51c2c64 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c688d530c8c0c8e8030430bb80267b2e = $(`<div id="html_c688d530c8c0c8e8030430bb80267b2e" style="width: 100.0%; height: 100.0%;">         <b>EEMTI São José</b><br>         Município: Granja<br>         Descrição: Sala De Aula PE<br>         Prioridade: <b>P4</b><br>         Módulos: 12<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>268.9 km</b><br>         <a href="https://maps.app.goo.gl/MAqnnGCrLxpd8mRf9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_069dcfe3dca19a48ab1025e3d51c2c64.setContent(html_c688d530c8c0c8e8030430bb80267b2e);
+            
+        
+
+        circle_marker_2f370e82f1466d23746797adbc1fedba.bindPopup(popup_069dcfe3dca19a48ab1025e3d51c2c64)
+        ;
+
+        
+    
+    
+            circle_marker_2f370e82f1466d23746797adbc1fedba.bindTooltip(
+                `<div>
+                     EEMTI São José (Granja)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_c4005f7bc8d0b47e5c7e91fa0364f47d.addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+        
+    
+            var feature_group_6035bd237c70fbf5fd450ddb61fe53ad = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var feature_group_34469fd7654d8ed17e48dd09603a368c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var feature_group_8c569dbd9b09a27b1c804500e32501ac = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_93f2011021f092d541bf6048d302ebf3 = L.circleMarker(
+                [-2.8855945, -40.1200317],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_d8291d83325db3110e2674e727d9f8f1 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5a537b6b01d074745e07a05982fd2035 = $(`<div id="html_5a537b6b01d074745e07a05982fd2035" style="width: 100.0%; height: 100.0%;">         <b>EEM Tomaz Pompeu de Sousa Brasil</b><br>         Município: Acaraú<br>         Descrição: Sala De Aula 3<br>         Prioridade: <b>P4</b><br>         Módulos: 6<br>         Qtd Cozinha: nan | Qtd Sala 3: 2.0 | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>206.0 km</b><br>         <a href="https://maps.app.goo.gl/V5MJzEiwDjwQxaci6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_d8291d83325db3110e2674e727d9f8f1.setContent(html_5a537b6b01d074745e07a05982fd2035);
+            
+        
+
+        circle_marker_93f2011021f092d541bf6048d302ebf3.bindPopup(popup_d8291d83325db3110e2674e727d9f8f1)
+        ;
+
+        
+    
+    
+            circle_marker_93f2011021f092d541bf6048d302ebf3.bindTooltip(
+                `<div>
+                     EEM Tomaz Pompeu de Sousa Brasil (Acaraú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f0a6febf4fae540b82c065a75f59419b = L.circleMarker(
+                [-6.5679254, -40.1256112],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_8bdc75233305010d67cb0f2795d43b23 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_113155f4bacde5f91775bbc4988616ba = $(`<div id="html_113155f4bacde5f91775bbc4988616ba" style="width: 100.0%; height: 100.0%;">         <b>EEM José Ferreira Barbosa</b><br>         Município: Aiuaba<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>353.2 km</b><br>         <a href="https://maps.app.goo.gl/CahYckGKaLYf556z8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_8bdc75233305010d67cb0f2795d43b23.setContent(html_113155f4bacde5f91775bbc4988616ba);
+            
+        
+
+        circle_marker_f0a6febf4fae540b82c065a75f59419b.bindPopup(popup_8bdc75233305010d67cb0f2795d43b23)
+        ;
+
+        
+    
+    
+            circle_marker_f0a6febf4fae540b82c065a75f59419b.bindTooltip(
+                `<div>
+                     EEM José Ferreira Barbosa (Aiuaba)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c98af2d2e1b98a9cacb8e23efbdd73c9 = L.circleMarker(
+                [-3.3637455, -39.8442296],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_6418089d08930fc2937c8003675973f9 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_42f0697d187639baee90a4373db4cf32 = $(`<div id="html_42f0697d187639baee90a4373db4cf32" style="width: 100.0%; height: 100.0%;">         <b>EEEP Luiz Gonzaga F Mota</b><br>         Município: Amontada<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>156.1 km</b><br>         <a href="https://maps.app.goo.gl/9Vecd5tyMwtZ6hgW8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_6418089d08930fc2937c8003675973f9.setContent(html_42f0697d187639baee90a4373db4cf32);
+            
+        
+
+        circle_marker_c98af2d2e1b98a9cacb8e23efbdd73c9.bindPopup(popup_6418089d08930fc2937c8003675973f9)
+        ;
+
+        
+    
+    
+            circle_marker_c98af2d2e1b98a9cacb8e23efbdd73c9.bindTooltip(
+                `<div>
+                     EEEP Luiz Gonzaga F Mota (Amontada)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_413cafcf4ca8fc4fae6ec163e65a163e = L.circleMarker(
+                [-4.1150528, -38.2452404],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_b3489ca07d03735fe08bbcd2c0ba98e6 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5ea7130ea6b775f8e691380e7d67e2da = $(`<div id="html_5ea7130ea6b775f8e691380e7d67e2da" style="width: 100.0%; height: 100.0%;">         <b>EEMTI Marconi Coelho Reis</b><br>         Município: Cascavel<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>44.6 km</b><br>         <a href="https://maps.app.goo.gl/ZDmre4oFz4TDWAMZ9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_b3489ca07d03735fe08bbcd2c0ba98e6.setContent(html_5ea7130ea6b775f8e691380e7d67e2da);
+            
+        
+
+        circle_marker_413cafcf4ca8fc4fae6ec163e65a163e.bindPopup(popup_b3489ca07d03735fe08bbcd2c0ba98e6)
+        ;
+
+        
+    
+    
+            circle_marker_413cafcf4ca8fc4fae6ec163e65a163e.bindTooltip(
+                `<div>
+                     EEMTI Marconi Coelho Reis (Cascavel)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bef601ea6d3ea47dd71d74b0341d2dcf = L.circleMarker(
+                [-3.76585, -38.6572633],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_74ec6ff91bfb34ae4419526768fd22d3 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c92862250c67c2addfc32097929dc31b = $(`<div id="html_c92862250c67c2addfc32097929dc31b" style="width: 100.0%; height: 100.0%;">         <b>EEM Eliezer de Freitas Guimarães</b><br>         Município: Caucaia<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>16.9 km</b><br>         <a href="https://maps.app.goo.gl/i99anLnaJNjFfQmE8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_74ec6ff91bfb34ae4419526768fd22d3.setContent(html_c92862250c67c2addfc32097929dc31b);
+            
+        
+
+        circle_marker_bef601ea6d3ea47dd71d74b0341d2dcf.bindPopup(popup_74ec6ff91bfb34ae4419526768fd22d3)
+        ;
+
+        
+    
+    
+            circle_marker_bef601ea6d3ea47dd71d74b0341d2dcf.bindTooltip(
+                `<div>
+                     EEM Eliezer de Freitas Guimarães (Caucaia)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_381e552d0852919704bfb9eab2dc7fe6 = L.circleMarker(
+                [-4.4228877, -41.2257127],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_615eb314813178891aaa6b742859bc0a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_834863a54efa83fda4c2534aef781333 = $(`<div id="html_834863a54efa83fda4c2534aef781333" style="width: 100.0%; height: 100.0%;">         <b>ESCOLA Quilombola Maria da Conceição</b><br>         Município: Croatá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>308.7 km</b><br>         <a href="https://maps.app.goo.gl/41rqMZ9hcdD3pE7g7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_615eb314813178891aaa6b742859bc0a.setContent(html_834863a54efa83fda4c2534aef781333);
+            
+        
+
+        circle_marker_381e552d0852919704bfb9eab2dc7fe6.bindPopup(popup_615eb314813178891aaa6b742859bc0a)
+        ;
+
+        
+    
+    
+            circle_marker_381e552d0852919704bfb9eab2dc7fe6.bindTooltip(
+                `<div>
+                     ESCOLA Quilombola Maria da Conceição (Croatá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fb716de7c18a389062285f3a28bb2919 = L.circleMarker(
+                [-3.8897901, -38.4582151],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_9c2df984d883fb821522e10e373a4a1c = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_8e957da9aaafb5ee9315c142f6414614 = $(`<div id="html_8e957da9aaafb5ee9315c142f6414614" style="width: 100.0%; height: 100.0%;">         <b>EEM Ana Bezerra de Sá</b><br>         Município: Eusébio<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>10.4 km</b><br>         <a href="https://maps.app.goo.gl/sZu1yKV2T3sLehwQ7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_9c2df984d883fb821522e10e373a4a1c.setContent(html_8e957da9aaafb5ee9315c142f6414614);
+            
+        
+
+        circle_marker_fb716de7c18a389062285f3a28bb2919.bindPopup(popup_9c2df984d883fb821522e10e373a4a1c)
+        ;
+
+        
+    
+    
+            circle_marker_fb716de7c18a389062285f3a28bb2919.bindTooltip(
+                `<div>
+                     EEM Ana Bezerra de Sá (Eusébio)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4d5ca34cf484c8bb2308740528851b10 = L.circleMarker(
+                [-3.8343151, -38.5606602],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_6358eea411a2a2a975e0ddbb480c5fc7 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_e56d57ed9051bb6c60506c707942214a = $(`<div id="html_e56d57ed9051bb6c60506c707942214a" style="width: 100.0%; height: 100.0%;">         <b>EEEP Prof Onelio Porto</b><br>         Município: Fortaleza<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>5.8 km</b><br>         <a href="https://maps.app.goo.gl/UDGLjdLvacXadzKR8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_6358eea411a2a2a975e0ddbb480c5fc7.setContent(html_e56d57ed9051bb6c60506c707942214a);
+            
+        
+
+        circle_marker_4d5ca34cf484c8bb2308740528851b10.bindPopup(popup_6358eea411a2a2a975e0ddbb480c5fc7)
+        ;
+
+        
+    
+    
+            circle_marker_4d5ca34cf484c8bb2308740528851b10.bindTooltip(
+                `<div>
+                     EEEP Prof Onelio Porto (Fortaleza)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e8b56376c124d07eb4f777da7ab527e = L.circleMarker(
+                [-3.7856797, -38.6129065],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_2e189341ecc4c75eb5d6a236b89e855c = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_4fe1bb79629081b1efd241b5c50efa88 = $(`<div id="html_4fe1bb79629081b1efd241b5c50efa88" style="width: 100.0%; height: 100.0%;">         <b>EEEP Icaro de Sousa Moreira</b><br>         Município: Fortaleza<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>11.6 km</b><br>         <a href="https://maps.app.goo.gl/UZ5hJzXVB8iTxW6n8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_2e189341ecc4c75eb5d6a236b89e855c.setContent(html_4fe1bb79629081b1efd241b5c50efa88);
+            
+        
+
+        circle_marker_2e8b56376c124d07eb4f777da7ab527e.bindPopup(popup_2e189341ecc4c75eb5d6a236b89e855c)
+        ;
+
+        
+    
+    
+            circle_marker_2e8b56376c124d07eb4f777da7ab527e.bindTooltip(
+                `<div>
+                     EEEP Icaro de Sousa Moreira (Fortaleza)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a63d69993cc1ea369d44ab8429ae63a3 = L.circleMarker(
+                [-4.4709603, -37.800832],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_93f805fbf0df04a15f037cf36aaa274e = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_da0e8ea5fd8062f5620798814f8e058f = $(`<div id="html_da0e8ea5fd8062f5620798814f8e058f" style="width: 100.0%; height: 100.0%;">         <b>EEM Helenita Lopes Gurgel Valente</b><br>         Município: Fortim<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>107.4 km</b><br>         <a href="https://maps.app.goo.gl/LmmRfM5C5YDXbPbX8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_93f805fbf0df04a15f037cf36aaa274e.setContent(html_da0e8ea5fd8062f5620798814f8e058f);
+            
+        
+
+        circle_marker_a63d69993cc1ea369d44ab8429ae63a3.bindPopup(popup_93f805fbf0df04a15f037cf36aaa274e)
+        ;
+
+        
+    
+    
+            circle_marker_a63d69993cc1ea369d44ab8429ae63a3.bindTooltip(
+                `<div>
+                     EEM Helenita Lopes Gurgel Valente (Fortim)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b337951fb9fb131b2e4f6cd6709c9ec8 = L.circleMarker(
+                [-3.1203842, -40.8318086],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_b03aee9deb920ba55110d9158239549c = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_51786b830e4d989364d5cea96188d52d = $(`<div id="html_51786b830e4d989364d5cea96188d52d" style="width: 100.0%; height: 100.0%;">         <b>EEMTI São José</b><br>         Município: Granja<br>         Descrição: Sala De Aula PE<br>         Prioridade: <b>P4</b><br>         Módulos: 12<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>268.9 km</b><br>         <a href="https://maps.app.goo.gl/MAqnnGCrLxpd8mRf9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_b03aee9deb920ba55110d9158239549c.setContent(html_51786b830e4d989364d5cea96188d52d);
+            
+        
+
+        circle_marker_b337951fb9fb131b2e4f6cd6709c9ec8.bindPopup(popup_b03aee9deb920ba55110d9158239549c)
+        ;
+
+        
+    
+    
+            circle_marker_b337951fb9fb131b2e4f6cd6709c9ec8.bindTooltip(
+                `<div>
+                     EEMTI São José (Granja)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_244c22604993d115ec6d707226d9facb = L.circleMarker(
+                [-3.6876938, -39.582888],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_af5f60ff278376187bb949feaf914b44 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_563d87bc4a130db2adbd61291c3172cb = $(`<div id="html_563d87bc4a130db2adbd61291c3172cb" style="width: 100.0%; height: 100.0%;">         <b>EEMTI Estefânia Matos</b><br>         Município: Itapajé<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>119.7 km</b><br>         <a href="https://maps.app.goo.gl/Kss5XcHm1jRVCPGK7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_af5f60ff278376187bb949feaf914b44.setContent(html_563d87bc4a130db2adbd61291c3172cb);
+            
+        
+
+        circle_marker_244c22604993d115ec6d707226d9facb.bindPopup(popup_af5f60ff278376187bb949feaf914b44)
+        ;
+
+        
+    
+    
+            circle_marker_244c22604993d115ec6d707226d9facb.bindTooltip(
+                `<div>
+                     EEMTI Estefânia Matos (Itapajé)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ebd38e295030f8075dfb313d786179c = L.circleMarker(
+                [-2.9191736, -39.9242064],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_a3c01a3ecb090f9be83a3b8738e4b43d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5ee2762ad6956577196feb0cb3d056f7 = $(`<div id="html_5ee2762ad6956577196feb0cb3d056f7" style="width: 100.0%; height: 100.0%;">         <b>EEM Luzia Araújo Barros</b><br>         Município: Itarema<br>         Descrição: Cozinha<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: 1.0 | Qtd Sala 3: nan | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>185.5 km</b><br>         <a href="https://maps.app.goo.gl/oH3GecsuNGLkgoB46" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_a3c01a3ecb090f9be83a3b8738e4b43d.setContent(html_5ee2762ad6956577196feb0cb3d056f7);
+            
+        
+
+        circle_marker_3ebd38e295030f8075dfb313d786179c.bindPopup(popup_a3c01a3ecb090f9be83a3b8738e4b43d)
+        ;
+
+        
+    
+    
+            circle_marker_3ebd38e295030f8075dfb313d786179c.bindTooltip(
+                `<div>
+                     EEM Luzia Araújo Barros (Itarema)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7fbd41e96937fa6cf93c42a835b70b1c = L.circleMarker(
+                [-3.8491826, -38.616303],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_f16dcf6ec5a04b7ec924b439f32d82e1 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_40ecd33e5367eeebd07b9a6b6402b618 = $(`<div id="html_40ecd33e5367eeebd07b9a6b6402b618" style="width: 100.0%; height: 100.0%;">         <b>EEM Jose Milton de Vasconcelos Dias</b><br>         Município: Maracanaú<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>12.2 km</b><br>         <a href="https://maps.app.goo.gl/chi3TzCEsoUz75p39" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_f16dcf6ec5a04b7ec924b439f32d82e1.setContent(html_40ecd33e5367eeebd07b9a6b6402b618);
+            
+        
+
+        circle_marker_7fbd41e96937fa6cf93c42a835b70b1c.bindPopup(popup_f16dcf6ec5a04b7ec924b439f32d82e1)
+        ;
+
+        
+    
+    
+            circle_marker_7fbd41e96937fa6cf93c42a835b70b1c.bindTooltip(
+                `<div>
+                     EEM Jose Milton de Vasconcelos Dias (Maracanaú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4d43e0257d15a78bfdab13528aef4467 = L.circleMarker(
+                [-5.7475755, -39.6345613],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_7c264f4b6cbd4d79645a5a36732d5d4e = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_fb8f54d471566d041d10cc892c89d42f = $(`<div id="html_fb8f54d471566d041d10cc892c89d42f" style="width: 100.0%; height: 100.0%;">         <b>EEM Professor Ananias do Amaral Vieira</b><br>         Município: Mombaça<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>247.5 km</b><br>         <a href="https://maps.app.goo.gl/6GgcBJujDvf7wPsy7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_7c264f4b6cbd4d79645a5a36732d5d4e.setContent(html_fb8f54d471566d041d10cc892c89d42f);
+            
+        
+
+        circle_marker_4d43e0257d15a78bfdab13528aef4467.bindPopup(popup_7c264f4b6cbd4d79645a5a36732d5d4e)
+        ;
+
+        
+    
+    
+            circle_marker_4d43e0257d15a78bfdab13528aef4467.bindTooltip(
+                `<div>
+                     EEM Professor Ananias do Amaral Vieira (Mombaça)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8199688e9f9add3e2d2030df47132ec2 = L.circleMarker(
+                [-4.1832617, -38.4697926],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_7d934188d6a6c53e50629fdbe2b986e7 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5d2b7b3ff1a73ee355cbff8add146d94 = $(`<div id="html_5d2b7b3ff1a73ee355cbff8add146d94" style="width: 100.0%; height: 100.0%;">         <b>EEM Dione Maria Bezerra Pessoa</b><br>         Município: Pacajus<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>41.2 km</b><br>         <a href="https://maps.app.goo.gl/q5dvjpkvVnF5K99m7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_7d934188d6a6c53e50629fdbe2b986e7.setContent(html_5d2b7b3ff1a73ee355cbff8add146d94);
+            
+        
+
+        circle_marker_8199688e9f9add3e2d2030df47132ec2.bindPopup(popup_7d934188d6a6c53e50629fdbe2b986e7)
+        ;
+
+        
+    
+    
+            circle_marker_8199688e9f9add3e2d2030df47132ec2.bindTooltip(
+                `<div>
+                     EEM Dione Maria Bezerra Pessoa (Pacajus)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_164eb3838e42c63f7c8ac7bc2df04ce9 = L.circleMarker(
+                [-4.9310937, -37.9693284],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_8494e9e8f10f12eea5700e120cb20649 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_90c6197284e056de3d5a8d71b5d3ec36 = $(`<div id="html_90c6197284e056de3d5a8d71b5d3ec36" style="width: 100.0%; height: 100.0%;">         <b>EEM Manuel Matoso Filho</b><br>         Município: Russas<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>137.5 km</b><br>         <a href="https://maps.app.goo.gl/Dyh5HweNCuBpojc46" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_8494e9e8f10f12eea5700e120cb20649.setContent(html_90c6197284e056de3d5a8d71b5d3ec36);
+            
+        
+
+        circle_marker_164eb3838e42c63f7c8ac7bc2df04ce9.bindPopup(popup_8494e9e8f10f12eea5700e120cb20649)
+        ;
+
+        
+    
+    
+            circle_marker_164eb3838e42c63f7c8ac7bc2df04ce9.bindTooltip(
+                `<div>
+                     EEM Manuel Matoso Filho (Russas)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_501ad6f631eb7237d064b8c350327bc0 = L.circleMarker(
+                [-4.1102331, -40.8741642],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_a5e88350c97de7c0778560f0373553de = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_e79d05048938b93e9f67e17b60987fbd = $(`<div id="html_e79d05048938b93e9f67e17b60987fbd" style="width: 100.0%; height: 100.0%;">         <b>EEM DEP Tomaz Brandão</b><br>         Município: São Benedito<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>264.3 km</b><br>         <a href="https://maps.app.goo.gl/Ppekz2siS488GyWR6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_a5e88350c97de7c0778560f0373553de.setContent(html_e79d05048938b93e9f67e17b60987fbd);
+            
+        
+
+        circle_marker_501ad6f631eb7237d064b8c350327bc0.bindPopup(popup_a5e88350c97de7c0778560f0373553de)
+        ;
+
+        
+    
+    
+            circle_marker_501ad6f631eb7237d064b8c350327bc0.bindTooltip(
+                `<div>
+                     EEM DEP Tomaz Brandão (São Benedito)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_58e7212ffc38975408f8cbdb296494ce = L.circleMarker(
+                [-3.7498318, -40.9367533],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e);
+        
+    
+        var popup_ecc9cb50b2606b63b17848fb13104a51 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5e26a93baa6b75a9b7da3a46be7c3505 = $(`<div id="html_5e26a93baa6b75a9b7da3a46be7c3505" style="width: 100.0%; height: 100.0%;">         <b>EEM Miguel Carneiro da Cunha</b><br>         Município: Tianguá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>269.4 km</b><br>         <a href="https://maps.app.goo.gl/wahWorNS6casN8UX6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_ecc9cb50b2606b63b17848fb13104a51.setContent(html_5e26a93baa6b75a9b7da3a46be7c3505);
+            
+        
+
+        circle_marker_58e7212ffc38975408f8cbdb296494ce.bindPopup(popup_ecc9cb50b2606b63b17848fb13104a51)
+        ;
+
+        
+    
+    
+            circle_marker_58e7212ffc38975408f8cbdb296494ce.bindTooltip(
+                `<div>
+                     EEM Miguel Carneiro da Cunha (Tianguá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_f8cd46abe17dcd6588701ef27b93fdd1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_931feab0a92e99eacefeb444e89080c9 = L.circleMarker(
+                [-2.8957283, -40.4492017],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f8cd46abe17dcd6588701ef27b93fdd1);
+        
+    
+        var popup_567aedd0fd2044cecb550ee1e49df60a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_2b3a421a459ffbece95bdcef6c614446 = $(`<div id="html_2b3a421a459ffbece95bdcef6c614446" style="width: 100.0%; height: 100.0%;">         <b>EEM José Teixeira de Albuquerquer</b><br>         Município: Jijoca de Jericoacoara<br>         Descrição: Sala De Aula 3 + Cozinha<br>         Prioridade: <b>P5</b><br>         Módulos: 13<br>         Qtd Cozinha: 1.0 | Qtd Sala 3: 3.0 | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>238.0 km</b><br>         <a href="https://maps.app.goo.gl/zt2Yez2JycvMZhSy9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_567aedd0fd2044cecb550ee1e49df60a.setContent(html_2b3a421a459ffbece95bdcef6c614446);
+            
+        
+
+        circle_marker_931feab0a92e99eacefeb444e89080c9.bindPopup(popup_567aedd0fd2044cecb550ee1e49df60a)
+        ;
+
+        
+    
+    
+            circle_marker_931feab0a92e99eacefeb444e89080c9.bindTooltip(
+                `<div>
+                     EEM José Teixeira de Albuquerquer (Jijoca de Jericoacoara)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e45c18698c56dbeb6e47e341e59c1ade = L.circleMarker(
+                [-3.8755953, -38.6314393],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f8cd46abe17dcd6588701ef27b93fdd1);
+        
+    
+        var popup_cb9fe26cbe4739756cb307492c5c155d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_fa36933904a3aa4e365a3e56ff634e16 = $(`<div id="html_fa36933904a3aa4e365a3e56ff634e16" style="width: 100.0%; height: 100.0%;">         <b>LICEU Professor Francisco Oscar Rodrigues</b><br>         Município: Maracanaú<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>14.9 km</b><br>         <a href="https://maps.app.goo.gl/KTvFCU6ioaYjx4jF8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_cb9fe26cbe4739756cb307492c5c155d.setContent(html_fa36933904a3aa4e365a3e56ff634e16);
+            
+        
+
+        circle_marker_e45c18698c56dbeb6e47e341e59c1ade.bindPopup(popup_cb9fe26cbe4739756cb307492c5c155d)
+        ;
+
+        
+    
+    
+            circle_marker_e45c18698c56dbeb6e47e341e59c1ade.bindTooltip(
+                `<div>
+                     LICEU Professor Francisco Oscar Rodrigues (Maracanaú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d1302204ea317a3148731a1d04d0141d = L.circleMarker(
+                [-3.9497417, -38.6957587],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f8cd46abe17dcd6588701ef27b93fdd1);
+        
+    
+        var popup_74a32ea2245a3a0de2e5cb253c5b7f25 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_1e6e55d6fc9c27666b79a4260e98541f = $(`<div id="html_1e6e55d6fc9c27666b79a4260e98541f" style="width: 100.0%; height: 100.0%;">         <b>EEFM Luiz Girão</b><br>         Município: Maranguape<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>25.3 km</b><br>         <a href="https://maps.app.goo.gl/Nk6zi87Zes95sUAZA" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_74a32ea2245a3a0de2e5cb253c5b7f25.setContent(html_1e6e55d6fc9c27666b79a4260e98541f);
+            
+        
+
+        circle_marker_d1302204ea317a3148731a1d04d0141d.bindPopup(popup_74a32ea2245a3a0de2e5cb253c5b7f25)
+        ;
+
+        
+    
+    
+            circle_marker_d1302204ea317a3148731a1d04d0141d.bindTooltip(
+                `<div>
+                     EEFM Luiz Girão (Maranguape)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f33d683ca0b571410a12b47ef9735379 = L.circleMarker(
+                [-3.8865966, -38.608103],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f8cd46abe17dcd6588701ef27b93fdd1);
+        
+    
+        var popup_72acd370ca363380f2079df23c199ae3 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_979b94f9546e6e1bc1319b9c936580f4 = $(`<div id="html_979b94f9546e6e1bc1319b9c936580f4" style="width: 100.0%; height: 100.0%;">         <b>Escola Fausto Aguiar Arruda</b><br>         Município: Pacatuba<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>13.3 km</b><br>         <a href="https://maps.app.goo.gl/BYYPaL7E8HrUzkXN9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_72acd370ca363380f2079df23c199ae3.setContent(html_979b94f9546e6e1bc1319b9c936580f4);
+            
+        
+
+        circle_marker_f33d683ca0b571410a12b47ef9735379.bindPopup(popup_72acd370ca363380f2079df23c199ae3)
+        ;
+
+        
+    
+    
+            circle_marker_f33d683ca0b571410a12b47ef9735379.bindTooltip(
+                `<div>
+                     Escola Fausto Aguiar Arruda (Pacatuba)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_abd423769f8acd40530292c2ca874024 = L.circleMarker(
+                [-3.3507689, -40.4660099],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f8cd46abe17dcd6588701ef27b93fdd1);
+        
+    
+        var popup_1ad7d89ed3296a9113b00b1836dd8024 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_cff95a36843080a664812244eda4ee60 = $(`<div id="html_cff95a36843080a664812244eda4ee60" style="width: 100.0%; height: 100.0%;">         <b>EEFM Coronel Apoliano</b><br>         Município: Senador Sá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>223.0 km</b><br>         <a href="https://maps.app.goo.gl/LuYoJJF93knWeg6G6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_1ad7d89ed3296a9113b00b1836dd8024.setContent(html_cff95a36843080a664812244eda4ee60);
+            
+        
+
+        circle_marker_abd423769f8acd40530292c2ca874024.bindPopup(popup_1ad7d89ed3296a9113b00b1836dd8024)
+        ;
+
+        
+    
+    
+            circle_marker_abd423769f8acd40530292c2ca874024.bindTooltip(
+                `<div>
+                     EEFM Coronel Apoliano (Senador Sá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_43fb25dd2ade4b72eefdcc269c8ca277 = L.circleMarker(
+                [-3.8508156, -40.9163332],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f8cd46abe17dcd6588701ef27b93fdd1);
+        
+    
+        var popup_8ac73a084016782b775bf15ed473dbda = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_2f3024ee0934bc60e1372fc8ba43e610 = $(`<div id="html_2f3024ee0934bc60e1372fc8ba43e610" style="width: 100.0%; height: 100.0%;">         <b>EEEP Gov Waldemar Alcantara</b><br>         Município: Ubajara<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>267.0 km</b><br>         <a href="https://maps.app.goo.gl/oS8Z835yVtPSAzhm8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_8ac73a084016782b775bf15ed473dbda.setContent(html_2f3024ee0934bc60e1372fc8ba43e610);
+            
+        
+
+        circle_marker_43fb25dd2ade4b72eefdcc269c8ca277.bindPopup(popup_8ac73a084016782b775bf15ed473dbda)
+        ;
+
+        
+    
+    
+            circle_marker_43fb25dd2ade4b72eefdcc269c8ca277.bindTooltip(
+                `<div>
+                     EEEP Gov Waldemar Alcantara (Ubajara)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_377aabd112dffc631e4767dc0b9305d5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var feature_group_c8aca76da18fc316b4ae5fbd2452bbcf = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_457f0aaf62f728b015b8bfac42bd90da = L.marker(
+                [-2.8855945, -40.1200317],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_eb4509e6f40084599d01b1181a936f22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bc8d24f901830eeb3ccae00788a21021 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_2a6b224699e5df756a8ae74340eb91fa = $(`<div id="html_2a6b224699e5df756a8ae74340eb91fa" style="width: 100.0%; height: 100.0%;">         <b>EEM Tomaz Pompeu de Sousa Brasil</b><br>         Município: Acaraú<br>         Descrição: Sala De Aula 3<br>         Prioridade: <b>P4</b><br>         Módulos: 6<br>         Qtd Cozinha: nan | Qtd Sala 3: 2.0 | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>206.0 km</b><br>         <a href="https://maps.app.goo.gl/V5MJzEiwDjwQxaci6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_bc8d24f901830eeb3ccae00788a21021.setContent(html_2a6b224699e5df756a8ae74340eb91fa);
+            
+        
+
+        marker_457f0aaf62f728b015b8bfac42bd90da.bindPopup(popup_bc8d24f901830eeb3ccae00788a21021)
+        ;
+
+        
+    
+    
+            marker_457f0aaf62f728b015b8bfac42bd90da.bindTooltip(
+                `<div>
+                     EEM Tomaz Pompeu de Sousa Brasil (Acaraú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_457f0aaf62f728b015b8bfac42bd90da.setIcon(icon_eb4509e6f40084599d01b1181a936f22);
+            
+    
+            var marker_09fa4943088b93a69454d7682b0de296 = L.marker(
+                [-6.5679254, -40.1256112],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_f40a2f7c9d50e3f63b0dd4f815251738 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_314fbd82f4f385f339209809d5f32315 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5fe53bb8a0c2a32dcea0530b3c5271c6 = $(`<div id="html_5fe53bb8a0c2a32dcea0530b3c5271c6" style="width: 100.0%; height: 100.0%;">         <b>EEM José Ferreira Barbosa</b><br>         Município: Aiuaba<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>353.2 km</b><br>         <a href="https://maps.app.goo.gl/CahYckGKaLYf556z8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_314fbd82f4f385f339209809d5f32315.setContent(html_5fe53bb8a0c2a32dcea0530b3c5271c6);
+            
+        
+
+        marker_09fa4943088b93a69454d7682b0de296.bindPopup(popup_314fbd82f4f385f339209809d5f32315)
+        ;
+
+        
+    
+    
+            marker_09fa4943088b93a69454d7682b0de296.bindTooltip(
+                `<div>
+                     EEM José Ferreira Barbosa (Aiuaba)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_09fa4943088b93a69454d7682b0de296.setIcon(icon_f40a2f7c9d50e3f63b0dd4f815251738);
+            
+    
+            var marker_1a21195cbe6368e6a855075f82a39d55 = L.marker(
+                [-3.3637455, -39.8442296],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_775d13f5696d90cccb61f2c46bd445f3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ce1126a978500625d92891c16dc3444a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_db4347ac90aa8ec8a51dcc34d634dd39 = $(`<div id="html_db4347ac90aa8ec8a51dcc34d634dd39" style="width: 100.0%; height: 100.0%;">         <b>EEEP Luiz Gonzaga F Mota</b><br>         Município: Amontada<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>156.1 km</b><br>         <a href="https://maps.app.goo.gl/9Vecd5tyMwtZ6hgW8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_ce1126a978500625d92891c16dc3444a.setContent(html_db4347ac90aa8ec8a51dcc34d634dd39);
+            
+        
+
+        marker_1a21195cbe6368e6a855075f82a39d55.bindPopup(popup_ce1126a978500625d92891c16dc3444a)
+        ;
+
+        
+    
+    
+            marker_1a21195cbe6368e6a855075f82a39d55.bindTooltip(
+                `<div>
+                     EEEP Luiz Gonzaga F Mota (Amontada)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1a21195cbe6368e6a855075f82a39d55.setIcon(icon_775d13f5696d90cccb61f2c46bd445f3);
+            
+    
+            var marker_042278ef7cdc260ccee4c9c6e14c1bcb = L.marker(
+                [-4.1150528, -38.2452404],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_f39b99f4e732ec5cfc19f6c535e226d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c07246e05b9745913c7f91f1de84beae = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_3c13da1d4f033d455faec13bf665a712 = $(`<div id="html_3c13da1d4f033d455faec13bf665a712" style="width: 100.0%; height: 100.0%;">         <b>EEMTI Marconi Coelho Reis</b><br>         Município: Cascavel<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>44.6 km</b><br>         <a href="https://maps.app.goo.gl/ZDmre4oFz4TDWAMZ9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_c07246e05b9745913c7f91f1de84beae.setContent(html_3c13da1d4f033d455faec13bf665a712);
+            
+        
+
+        marker_042278ef7cdc260ccee4c9c6e14c1bcb.bindPopup(popup_c07246e05b9745913c7f91f1de84beae)
+        ;
+
+        
+    
+    
+            marker_042278ef7cdc260ccee4c9c6e14c1bcb.bindTooltip(
+                `<div>
+                     EEMTI Marconi Coelho Reis (Cascavel)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_042278ef7cdc260ccee4c9c6e14c1bcb.setIcon(icon_f39b99f4e732ec5cfc19f6c535e226d6);
+            
+    
+            var marker_9cbac680cc0b398cbd331f12d12cf1fa = L.marker(
+                [-3.76585, -38.6572633],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_b8489a7b9b73259c07a87bac74860102 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd49134fed6dca87677f7e8d89512fbd = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_8df4f07d537d53f1ecad40d92b24544e = $(`<div id="html_8df4f07d537d53f1ecad40d92b24544e" style="width: 100.0%; height: 100.0%;">         <b>EEM Eliezer de Freitas Guimarães</b><br>         Município: Caucaia<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>16.9 km</b><br>         <a href="https://maps.app.goo.gl/i99anLnaJNjFfQmE8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_cd49134fed6dca87677f7e8d89512fbd.setContent(html_8df4f07d537d53f1ecad40d92b24544e);
+            
+        
+
+        marker_9cbac680cc0b398cbd331f12d12cf1fa.bindPopup(popup_cd49134fed6dca87677f7e8d89512fbd)
+        ;
+
+        
+    
+    
+            marker_9cbac680cc0b398cbd331f12d12cf1fa.bindTooltip(
+                `<div>
+                     EEM Eliezer de Freitas Guimarães (Caucaia)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9cbac680cc0b398cbd331f12d12cf1fa.setIcon(icon_b8489a7b9b73259c07a87bac74860102);
+            
+    
+            var marker_994c21ac83c56c0e10e4152bc095038a = L.marker(
+                [-4.4228877, -41.2257127],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_fc15dc62ad0d6b1d0c19b6d8c923af01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aef26ad69cdef739cf5193ea2cc19c20 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_41020301c54fde33707a9a07ecb185b5 = $(`<div id="html_41020301c54fde33707a9a07ecb185b5" style="width: 100.0%; height: 100.0%;">         <b>ESCOLA Quilombola Maria da Conceição</b><br>         Município: Croatá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>308.7 km</b><br>         <a href="https://maps.app.goo.gl/41rqMZ9hcdD3pE7g7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_aef26ad69cdef739cf5193ea2cc19c20.setContent(html_41020301c54fde33707a9a07ecb185b5);
+            
+        
+
+        marker_994c21ac83c56c0e10e4152bc095038a.bindPopup(popup_aef26ad69cdef739cf5193ea2cc19c20)
+        ;
+
+        
+    
+    
+            marker_994c21ac83c56c0e10e4152bc095038a.bindTooltip(
+                `<div>
+                     ESCOLA Quilombola Maria da Conceição (Croatá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_994c21ac83c56c0e10e4152bc095038a.setIcon(icon_fc15dc62ad0d6b1d0c19b6d8c923af01);
+            
+    
+            var marker_0e9b9a0a17830555439f30f20894b980 = L.marker(
+                [-3.8897901, -38.4582151],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_92304876c57023737d3cb18474e1d5e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38fa1e3f8155431e4a325a1d36fa6fc1 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_8a8a8df954f16e069b6402b94aa74e75 = $(`<div id="html_8a8a8df954f16e069b6402b94aa74e75" style="width: 100.0%; height: 100.0%;">         <b>EEM Ana Bezerra de Sá</b><br>         Município: Eusébio<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>10.4 km</b><br>         <a href="https://maps.app.goo.gl/sZu1yKV2T3sLehwQ7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_38fa1e3f8155431e4a325a1d36fa6fc1.setContent(html_8a8a8df954f16e069b6402b94aa74e75);
+            
+        
+
+        marker_0e9b9a0a17830555439f30f20894b980.bindPopup(popup_38fa1e3f8155431e4a325a1d36fa6fc1)
+        ;
+
+        
+    
+    
+            marker_0e9b9a0a17830555439f30f20894b980.bindTooltip(
+                `<div>
+                     EEM Ana Bezerra de Sá (Eusébio)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0e9b9a0a17830555439f30f20894b980.setIcon(icon_92304876c57023737d3cb18474e1d5e0);
+            
+    
+            var marker_e79ef7347e2a4990041864f81749d7a5 = L.marker(
+                [-3.8343151, -38.5606602],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_197d4f6897e7665bc07f1a22d1f19921 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_37753eada34d79d659835da209332134 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c83bfd1d2984fb0cd4896a7284638599 = $(`<div id="html_c83bfd1d2984fb0cd4896a7284638599" style="width: 100.0%; height: 100.0%;">         <b>EEEP Prof Onelio Porto</b><br>         Município: Fortaleza<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>5.8 km</b><br>         <a href="https://maps.app.goo.gl/UDGLjdLvacXadzKR8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_37753eada34d79d659835da209332134.setContent(html_c83bfd1d2984fb0cd4896a7284638599);
+            
+        
+
+        marker_e79ef7347e2a4990041864f81749d7a5.bindPopup(popup_37753eada34d79d659835da209332134)
+        ;
+
+        
+    
+    
+            marker_e79ef7347e2a4990041864f81749d7a5.bindTooltip(
+                `<div>
+                     EEEP Prof Onelio Porto (Fortaleza)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e79ef7347e2a4990041864f81749d7a5.setIcon(icon_197d4f6897e7665bc07f1a22d1f19921);
+            
+    
+            var marker_35fdb7ec7b6cbf07ca3447e2c9d5c306 = L.marker(
+                [-3.7856797, -38.6129065],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_752f84381f010e902f832b7ec06a1a5d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54de844a6d75c70e8b08c74e62382d2d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c3c395c74e352632bce2e28be272c1c2 = $(`<div id="html_c3c395c74e352632bce2e28be272c1c2" style="width: 100.0%; height: 100.0%;">         <b>EEEP Icaro de Sousa Moreira</b><br>         Município: Fortaleza<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>11.6 km</b><br>         <a href="https://maps.app.goo.gl/UZ5hJzXVB8iTxW6n8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_54de844a6d75c70e8b08c74e62382d2d.setContent(html_c3c395c74e352632bce2e28be272c1c2);
+            
+        
+
+        marker_35fdb7ec7b6cbf07ca3447e2c9d5c306.bindPopup(popup_54de844a6d75c70e8b08c74e62382d2d)
+        ;
+
+        
+    
+    
+            marker_35fdb7ec7b6cbf07ca3447e2c9d5c306.bindTooltip(
+                `<div>
+                     EEEP Icaro de Sousa Moreira (Fortaleza)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_35fdb7ec7b6cbf07ca3447e2c9d5c306.setIcon(icon_752f84381f010e902f832b7ec06a1a5d);
+            
+    
+            var marker_704fdf4f64823eee2b1efa33a04abab2 = L.marker(
+                [-4.4709603, -37.800832],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_a280624d94f9255bb6dfd102e5e98737 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_828a9be2038519502bb0e439bccc97a1 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_0c2df6d15ecb1f67a27dd7c5aafb1e1e = $(`<div id="html_0c2df6d15ecb1f67a27dd7c5aafb1e1e" style="width: 100.0%; height: 100.0%;">         <b>EEM Helenita Lopes Gurgel Valente</b><br>         Município: Fortim<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>107.4 km</b><br>         <a href="https://maps.app.goo.gl/LmmRfM5C5YDXbPbX8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_828a9be2038519502bb0e439bccc97a1.setContent(html_0c2df6d15ecb1f67a27dd7c5aafb1e1e);
+            
+        
+
+        marker_704fdf4f64823eee2b1efa33a04abab2.bindPopup(popup_828a9be2038519502bb0e439bccc97a1)
+        ;
+
+        
+    
+    
+            marker_704fdf4f64823eee2b1efa33a04abab2.bindTooltip(
+                `<div>
+                     EEM Helenita Lopes Gurgel Valente (Fortim)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_704fdf4f64823eee2b1efa33a04abab2.setIcon(icon_a280624d94f9255bb6dfd102e5e98737);
+            
+    
+            var marker_ca8f997deb8b6e8a7c7dec4c5df30ac5 = L.marker(
+                [-3.1203842, -40.8318086],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_cdcf5b5076f4fb7d80845e70bdddf7f9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3cb4fc13034b0aa89705e9d37ac3ac0 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_13a4c21af7d55f638a6613ef7533fe4a = $(`<div id="html_13a4c21af7d55f638a6613ef7533fe4a" style="width: 100.0%; height: 100.0%;">         <b>EEMTI São José</b><br>         Município: Granja<br>         Descrição: Sala De Aula PE<br>         Prioridade: <b>P4</b><br>         Módulos: 12<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>268.9 km</b><br>         <a href="https://maps.app.goo.gl/MAqnnGCrLxpd8mRf9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_b3cb4fc13034b0aa89705e9d37ac3ac0.setContent(html_13a4c21af7d55f638a6613ef7533fe4a);
+            
+        
+
+        marker_ca8f997deb8b6e8a7c7dec4c5df30ac5.bindPopup(popup_b3cb4fc13034b0aa89705e9d37ac3ac0)
+        ;
+
+        
+    
+    
+            marker_ca8f997deb8b6e8a7c7dec4c5df30ac5.bindTooltip(
+                `<div>
+                     EEMTI São José (Granja)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ca8f997deb8b6e8a7c7dec4c5df30ac5.setIcon(icon_cdcf5b5076f4fb7d80845e70bdddf7f9);
+            
+    
+            var marker_bc48d86a8c9fa91391923415b9b8759e = L.marker(
+                [-3.6876938, -39.582888],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_d87e93a1ceeed68afa4db251648c05bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_73d8849fc40c42d7574e5fe38b46e869 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_7ad198db16ac1d1ea840877eb6000fd3 = $(`<div id="html_7ad198db16ac1d1ea840877eb6000fd3" style="width: 100.0%; height: 100.0%;">         <b>EEMTI Estefânia Matos</b><br>         Município: Itapajé<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>119.7 km</b><br>         <a href="https://maps.app.goo.gl/Kss5XcHm1jRVCPGK7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_73d8849fc40c42d7574e5fe38b46e869.setContent(html_7ad198db16ac1d1ea840877eb6000fd3);
+            
+        
+
+        marker_bc48d86a8c9fa91391923415b9b8759e.bindPopup(popup_73d8849fc40c42d7574e5fe38b46e869)
+        ;
+
+        
+    
+    
+            marker_bc48d86a8c9fa91391923415b9b8759e.bindTooltip(
+                `<div>
+                     EEMTI Estefânia Matos (Itapajé)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc48d86a8c9fa91391923415b9b8759e.setIcon(icon_d87e93a1ceeed68afa4db251648c05bc);
+            
+    
+            var marker_13d8a763301e7b04c76fd26aa350e3c3 = L.marker(
+                [-2.9191736, -39.9242064],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_60f81a2e34321cb00dc19117df98f5a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d60652c41fa0e3c0ee76e29c6ea336dc = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_62eb9ff4c3527246ad3d0cdd79ebc54f = $(`<div id="html_62eb9ff4c3527246ad3d0cdd79ebc54f" style="width: 100.0%; height: 100.0%;">         <b>EEM Luzia Araújo Barros</b><br>         Município: Itarema<br>         Descrição: Cozinha<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: 1.0 | Qtd Sala 3: nan | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>185.5 km</b><br>         <a href="https://maps.app.goo.gl/oH3GecsuNGLkgoB46" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_d60652c41fa0e3c0ee76e29c6ea336dc.setContent(html_62eb9ff4c3527246ad3d0cdd79ebc54f);
+            
+        
+
+        marker_13d8a763301e7b04c76fd26aa350e3c3.bindPopup(popup_d60652c41fa0e3c0ee76e29c6ea336dc)
+        ;
+
+        
+    
+    
+            marker_13d8a763301e7b04c76fd26aa350e3c3.bindTooltip(
+                `<div>
+                     EEM Luzia Araújo Barros (Itarema)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_13d8a763301e7b04c76fd26aa350e3c3.setIcon(icon_60f81a2e34321cb00dc19117df98f5a1);
+            
+    
+            var marker_807859bb0935082ce2de1e940d9b790b = L.marker(
+                [-2.8957283, -40.4492017],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_50feec3b2173bae4aa3a95428c7a6e75 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33c287f3df5e99b25893fe1a8c385f7f = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_e5307b213dfc9d115692673c5b7e8c26 = $(`<div id="html_e5307b213dfc9d115692673c5b7e8c26" style="width: 100.0%; height: 100.0%;">         <b>EEM José Teixeira de Albuquerquer</b><br>         Município: Jijoca de Jericoacoara<br>         Descrição: Sala De Aula 3 + Cozinha<br>         Prioridade: <b>P5</b><br>         Módulos: 13<br>         Qtd Cozinha: 1.0 | Qtd Sala 3: 3.0 | Qtd Sala 4: nan<br>         Distância da fábrica (reta): <b>238.0 km</b><br>         <a href="https://maps.app.goo.gl/zt2Yez2JycvMZhSy9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_33c287f3df5e99b25893fe1a8c385f7f.setContent(html_e5307b213dfc9d115692673c5b7e8c26);
+            
+        
+
+        marker_807859bb0935082ce2de1e940d9b790b.bindPopup(popup_33c287f3df5e99b25893fe1a8c385f7f)
+        ;
+
+        
+    
+    
+            marker_807859bb0935082ce2de1e940d9b790b.bindTooltip(
+                `<div>
+                     EEM José Teixeira de Albuquerquer (Jijoca de Jericoacoara)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_807859bb0935082ce2de1e940d9b790b.setIcon(icon_50feec3b2173bae4aa3a95428c7a6e75);
+            
+    
+            var marker_8c71fd2cbb5629e889192c218cfebb42 = L.marker(
+                [-3.8755953, -38.6314393],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_3f39b67b5a1353173f418abc6445e045 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c41a1932b960c79d69a4e15d64566303 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_ea684cc57d2d428154f941fd0c62d509 = $(`<div id="html_ea684cc57d2d428154f941fd0c62d509" style="width: 100.0%; height: 100.0%;">         <b>LICEU Professor Francisco Oscar Rodrigues</b><br>         Município: Maracanaú<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>14.9 km</b><br>         <a href="https://maps.app.goo.gl/KTvFCU6ioaYjx4jF8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_c41a1932b960c79d69a4e15d64566303.setContent(html_ea684cc57d2d428154f941fd0c62d509);
+            
+        
+
+        marker_8c71fd2cbb5629e889192c218cfebb42.bindPopup(popup_c41a1932b960c79d69a4e15d64566303)
+        ;
+
+        
+    
+    
+            marker_8c71fd2cbb5629e889192c218cfebb42.bindTooltip(
+                `<div>
+                     LICEU Professor Francisco Oscar Rodrigues (Maracanaú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c71fd2cbb5629e889192c218cfebb42.setIcon(icon_3f39b67b5a1353173f418abc6445e045);
+            
+    
+            var marker_96b499b8a88473aa2e4f189cb7e79b7d = L.marker(
+                [-3.8491826, -38.616303],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_9e357373451c767df36d7c0d66a28d69 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1559dbb757d3e0e25ec56b72f6a8f035 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_4d01d1023ee3ddff5b2e0f3d60c8c767 = $(`<div id="html_4d01d1023ee3ddff5b2e0f3d60c8c767" style="width: 100.0%; height: 100.0%;">         <b>EEM Jose Milton de Vasconcelos Dias</b><br>         Município: Maracanaú<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>12.2 km</b><br>         <a href="https://maps.app.goo.gl/chi3TzCEsoUz75p39" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_1559dbb757d3e0e25ec56b72f6a8f035.setContent(html_4d01d1023ee3ddff5b2e0f3d60c8c767);
+            
+        
+
+        marker_96b499b8a88473aa2e4f189cb7e79b7d.bindPopup(popup_1559dbb757d3e0e25ec56b72f6a8f035)
+        ;
+
+        
+    
+    
+            marker_96b499b8a88473aa2e4f189cb7e79b7d.bindTooltip(
+                `<div>
+                     EEM Jose Milton de Vasconcelos Dias (Maracanaú)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_96b499b8a88473aa2e4f189cb7e79b7d.setIcon(icon_9e357373451c767df36d7c0d66a28d69);
+            
+    
+            var marker_102212f193ab3d18b9c04d8f5307b3eb = L.marker(
+                [-3.9497417, -38.6957587],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_a163932305e8b166ea09138fd494e7cc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0524c84f48c4e931999373e902ed2312 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_90cb86c37e9d5a486818ec23cb5d4068 = $(`<div id="html_90cb86c37e9d5a486818ec23cb5d4068" style="width: 100.0%; height: 100.0%;">         <b>EEFM Luiz Girão</b><br>         Município: Maranguape<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>25.3 km</b><br>         <a href="https://maps.app.goo.gl/Nk6zi87Zes95sUAZA" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_0524c84f48c4e931999373e902ed2312.setContent(html_90cb86c37e9d5a486818ec23cb5d4068);
+            
+        
+
+        marker_102212f193ab3d18b9c04d8f5307b3eb.bindPopup(popup_0524c84f48c4e931999373e902ed2312)
+        ;
+
+        
+    
+    
+            marker_102212f193ab3d18b9c04d8f5307b3eb.bindTooltip(
+                `<div>
+                     EEFM Luiz Girão (Maranguape)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_102212f193ab3d18b9c04d8f5307b3eb.setIcon(icon_a163932305e8b166ea09138fd494e7cc);
+            
+    
+            var marker_ce60a3c7d1ef74944cee94f7de5c632c = L.marker(
+                [-5.7475755, -39.6345613],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_020334c27c323dab09e3ef768bb481ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5bbf1e57dd3a9371c83ea25f15fe274b = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_b39ffc7305c87b91512227c3087bdc48 = $(`<div id="html_b39ffc7305c87b91512227c3087bdc48" style="width: 100.0%; height: 100.0%;">         <b>EEM Professor Ananias do Amaral Vieira</b><br>         Município: Mombaça<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>247.5 km</b><br>         <a href="https://maps.app.goo.gl/6GgcBJujDvf7wPsy7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_5bbf1e57dd3a9371c83ea25f15fe274b.setContent(html_b39ffc7305c87b91512227c3087bdc48);
+            
+        
+
+        marker_ce60a3c7d1ef74944cee94f7de5c632c.bindPopup(popup_5bbf1e57dd3a9371c83ea25f15fe274b)
+        ;
+
+        
+    
+    
+            marker_ce60a3c7d1ef74944cee94f7de5c632c.bindTooltip(
+                `<div>
+                     EEM Professor Ananias do Amaral Vieira (Mombaça)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ce60a3c7d1ef74944cee94f7de5c632c.setIcon(icon_020334c27c323dab09e3ef768bb481ef);
+            
+    
+            var marker_19c125c7ccffbba8c64bc86ba3d8c6ba = L.marker(
+                [-4.1832617, -38.4697926],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_3380f0284c7a05d4a7f11ddae655de9e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2918273125d39361788dfd4a131b65a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_6b3c9af8134fbb2d8e0b6b1b688dc360 = $(`<div id="html_6b3c9af8134fbb2d8e0b6b1b688dc360" style="width: 100.0%; height: 100.0%;">         <b>EEM Dione Maria Bezerra Pessoa</b><br>         Município: Pacajus<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>41.2 km</b><br>         <a href="https://maps.app.goo.gl/q5dvjpkvVnF5K99m7" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_b2918273125d39361788dfd4a131b65a.setContent(html_6b3c9af8134fbb2d8e0b6b1b688dc360);
+            
+        
+
+        marker_19c125c7ccffbba8c64bc86ba3d8c6ba.bindPopup(popup_b2918273125d39361788dfd4a131b65a)
+        ;
+
+        
+    
+    
+            marker_19c125c7ccffbba8c64bc86ba3d8c6ba.bindTooltip(
+                `<div>
+                     EEM Dione Maria Bezerra Pessoa (Pacajus)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_19c125c7ccffbba8c64bc86ba3d8c6ba.setIcon(icon_3380f0284c7a05d4a7f11ddae655de9e);
+            
+    
+            var marker_1e18443f64a55df91127fe394458c162 = L.marker(
+                [-3.8865966, -38.608103],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_f84fb0228960d89b68afc992644d62ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c3e34f82f9478eed8cac783c07473a41 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_e81208aae19a9fca38d5ccd57fe73ab4 = $(`<div id="html_e81208aae19a9fca38d5ccd57fe73ab4" style="width: 100.0%; height: 100.0%;">         <b>Escola Fausto Aguiar Arruda</b><br>         Município: Pacatuba<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>13.3 km</b><br>         <a href="https://maps.app.goo.gl/BYYPaL7E8HrUzkXN9" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_c3e34f82f9478eed8cac783c07473a41.setContent(html_e81208aae19a9fca38d5ccd57fe73ab4);
+            
+        
+
+        marker_1e18443f64a55df91127fe394458c162.bindPopup(popup_c3e34f82f9478eed8cac783c07473a41)
+        ;
+
+        
+    
+    
+            marker_1e18443f64a55df91127fe394458c162.bindTooltip(
+                `<div>
+                     Escola Fausto Aguiar Arruda (Pacatuba)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1e18443f64a55df91127fe394458c162.setIcon(icon_f84fb0228960d89b68afc992644d62ce);
+            
+    
+            var marker_418be59fdf76f6e804ec5c88e069e62c = L.marker(
+                [-4.9310937, -37.9693284],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_8e515388a6d085d5cfb44e78543d94a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4ee5b24d10e6e21024f2adab84a3def9 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_4d6a8fcfb0e77ffe661c911584311b7e = $(`<div id="html_4d6a8fcfb0e77ffe661c911584311b7e" style="width: 100.0%; height: 100.0%;">         <b>EEM Manuel Matoso Filho</b><br>         Município: Russas<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>137.5 km</b><br>         <a href="https://maps.app.goo.gl/Dyh5HweNCuBpojc46" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_4ee5b24d10e6e21024f2adab84a3def9.setContent(html_4d6a8fcfb0e77ffe661c911584311b7e);
+            
+        
+
+        marker_418be59fdf76f6e804ec5c88e069e62c.bindPopup(popup_4ee5b24d10e6e21024f2adab84a3def9)
+        ;
+
+        
+    
+    
+            marker_418be59fdf76f6e804ec5c88e069e62c.bindTooltip(
+                `<div>
+                     EEM Manuel Matoso Filho (Russas)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_418be59fdf76f6e804ec5c88e069e62c.setIcon(icon_8e515388a6d085d5cfb44e78543d94a9);
+            
+    
+            var marker_fcd4cd16db0512f704d86c9d5f55c2bb = L.marker(
+                [-4.1102331, -40.8741642],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_12d26dde59652033845d2612d3e21c9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3553f5a824ebc9a8a14e93e768d7632d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_b64d86c5c9f03a19fa6daeb85a8782bd = $(`<div id="html_b64d86c5c9f03a19fa6daeb85a8782bd" style="width: 100.0%; height: 100.0%;">         <b>EEM DEP Tomaz Brandão</b><br>         Município: São Benedito<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>264.3 km</b><br>         <a href="https://maps.app.goo.gl/Ppekz2siS488GyWR6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_3553f5a824ebc9a8a14e93e768d7632d.setContent(html_b64d86c5c9f03a19fa6daeb85a8782bd);
+            
+        
+
+        marker_fcd4cd16db0512f704d86c9d5f55c2bb.bindPopup(popup_3553f5a824ebc9a8a14e93e768d7632d)
+        ;
+
+        
+    
+    
+            marker_fcd4cd16db0512f704d86c9d5f55c2bb.bindTooltip(
+                `<div>
+                     EEM DEP Tomaz Brandão (São Benedito)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fcd4cd16db0512f704d86c9d5f55c2bb.setIcon(icon_12d26dde59652033845d2612d3e21c9c);
+            
+    
+            var marker_11c049a25179c60e28675a8662fd2e83 = L.marker(
+                [-3.3507689, -40.4660099],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_f852f2bb1d3f03259580503c3e90d290 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_17216e0e93723c2a33402a9d7cc5d571 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_16ab5319265acae5ab1cf5fc9fd8b40a = $(`<div id="html_16ab5319265acae5ab1cf5fc9fd8b40a" style="width: 100.0%; height: 100.0%;">         <b>EEFM Coronel Apoliano</b><br>         Município: Senador Sá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>223.0 km</b><br>         <a href="https://maps.app.goo.gl/LuYoJJF93knWeg6G6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_17216e0e93723c2a33402a9d7cc5d571.setContent(html_16ab5319265acae5ab1cf5fc9fd8b40a);
+            
+        
+
+        marker_11c049a25179c60e28675a8662fd2e83.bindPopup(popup_17216e0e93723c2a33402a9d7cc5d571)
+        ;
+
+        
+    
+    
+            marker_11c049a25179c60e28675a8662fd2e83.bindTooltip(
+                `<div>
+                     EEFM Coronel Apoliano (Senador Sá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_11c049a25179c60e28675a8662fd2e83.setIcon(icon_f852f2bb1d3f03259580503c3e90d290);
+            
+    
+            var marker_2b1f6c0aec2ea7eea03cfb1e2fb150b0 = L.marker(
+                [-3.7498318, -40.9367533],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_d002a5d482dae123ffca524253885824 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_328590e885fdc63d7da68c091e0e72f8 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_81fd517e705de8131e61b155fcf1d406 = $(`<div id="html_81fd517e705de8131e61b155fcf1d406" style="width: 100.0%; height: 100.0%;">         <b>EEM Miguel Carneiro da Cunha</b><br>         Município: Tianguá<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P4</b><br>         Módulos: 8<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 2.0<br>         Distância da fábrica (reta): <b>269.4 km</b><br>         <a href="https://maps.app.goo.gl/wahWorNS6casN8UX6" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_328590e885fdc63d7da68c091e0e72f8.setContent(html_81fd517e705de8131e61b155fcf1d406);
+            
+        
+
+        marker_2b1f6c0aec2ea7eea03cfb1e2fb150b0.bindPopup(popup_328590e885fdc63d7da68c091e0e72f8)
+        ;
+
+        
+    
+    
+            marker_2b1f6c0aec2ea7eea03cfb1e2fb150b0.bindTooltip(
+                `<div>
+                     EEM Miguel Carneiro da Cunha (Tianguá)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b1f6c0aec2ea7eea03cfb1e2fb150b0.setIcon(icon_d002a5d482dae123ffca524253885824);
+            
+    
+            var marker_46b044fc7c6d708d8350312fc3b5373b = L.marker(
+                [-3.8508156, -40.9163332],
+                {
+}
+            ).addTo(feature_group_c8aca76da18fc316b4ae5fbd2452bbcf);
+        
+    
+            var icon_b4716c8c39b7c4408307082a1e7aede4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d53b59e29be9c3aa9dc1401c7e57628b = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_72fbb0cefcc248b21f702682d33fbb9d = $(`<div id="html_72fbb0cefcc248b21f702682d33fbb9d" style="width: 100.0%; height: 100.0%;">         <b>EEEP Gov Waldemar Alcantara</b><br>         Município: Ubajara<br>         Descrição: Sala De Aula 4<br>         Prioridade: <b>P5</b><br>         Módulos: 4<br>         Qtd Cozinha: nan | Qtd Sala 3: nan | Qtd Sala 4: 1.0<br>         Distância da fábrica (reta): <b>267.0 km</b><br>         <a href="https://maps.app.goo.gl/oS8Z835yVtPSAzhm8" target="_blank" rel="noopener">Abrir no Google Maps</a>         </div>`)[0];
+                popup_d53b59e29be9c3aa9dc1401c7e57628b.setContent(html_72fbb0cefcc248b21f702682d33fbb9d);
+            
+        
+
+        marker_46b044fc7c6d708d8350312fc3b5373b.bindPopup(popup_d53b59e29be9c3aa9dc1401c7e57628b)
+        ;
+
+        
+    
+    
+            marker_46b044fc7c6d708d8350312fc3b5373b.bindTooltip(
+                `<div>
+                     EEEP Gov Waldemar Alcantara (Ubajara)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_46b044fc7c6d708d8350312fc3b5373b.setIcon(icon_b4716c8c39b7c4408307082a1e7aede4);
+            
+    
+            var feature_group_c8aca76da18fc316b4ae5fbd2452bbcfsearchControl = new L.Control.Search({
+                layer: feature_group_c8aca76da18fc316b4ae5fbd2452bbcf,
+                
+                propertyName: 'tooltip',
+                
+                collapsed: false,
+                textPlaceholder: 'Buscar unidade...',
+                position:'topleft',
+            
+                initial: false,
+                
+                hideMarkerOnCollapse: true
+            
+                });
+                feature_group_c8aca76da18fc316b4ae5fbd2452bbcfsearchControl.on('search:locationfound', function(e) {
+                    feature_group_c8aca76da18fc316b4ae5fbd2452bbcf.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                feature_group_c8aca76da18fc316b4ae5fbd2452bbcfsearchControl.on('search:collapsed', function(e) {
+                        feature_group_c8aca76da18fc316b4ae5fbd2452bbcf.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_5b0538be1da729b1031b7e7cbdc450d8.addControl( feature_group_c8aca76da18fc316b4ae5fbd2452bbcfsearchControl );
+
+        
+    
+            var layer_control_18a43e862c1603c9adfca4806248753f_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_c08deda8985d46d080ab87869e6569b0,
+                },
+                overlays :  {
+                    "[Descri\u00e7\u00e3o] Cozinha" : feature_group_34ede98b2e64fe426a01157b1348abae,
+                    "[Descri\u00e7\u00e3o] Sala De Aula 3" : feature_group_aa4e282c138e8b3fc07a3b68a4960710,
+                    "[Descri\u00e7\u00e3o] Sala De Aula 3 + Cozinha" : feature_group_ea512e2af74f1a5b050b59e92845be2b,
+                    "[Descri\u00e7\u00e3o] Sala De Aula 4" : feature_group_ab09e847c75266eb22610adfe2c63acb,
+                    "[Descri\u00e7\u00e3o] Sala De Aula PE" : feature_group_c4005f7bc8d0b47e5c7e91fa0364f47d,
+                    "[Prioridade] P1" : feature_group_6035bd237c70fbf5fd450ddb61fe53ad,
+                    "[Prioridade] P2" : feature_group_34469fd7654d8ed17e48dd09603a368c,
+                    "[Prioridade] P3" : feature_group_8c569dbd9b09a27b1c804500e32501ac,
+                    "[Prioridade] P4" : feature_group_e4006e8d1cd8170b8a8e0ce0bc8d0c0e,
+                    "[Prioridade] P5" : feature_group_f8cd46abe17dcd6588701ef27b93fdd1,
+                    "[Prioridade] Outros" : feature_group_377aabd112dffc631e4767dc0b9305d5,
+                    "(Busca) Todas as unidades" : feature_group_c8aca76da18fc316b4ae5fbd2452bbcf,
+                },
+            };
+            let layer_control_18a43e862c1603c9adfca4806248753f = L.control.layers(
+                layer_control_18a43e862c1603c9adfca4806248753f_layers.base_layers,
+                layer_control_18a43e862c1603c9adfca4806248753f_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_5b0538be1da729b1031b7e7cbdc450d8);
+
+        
+</script>
+</html>
