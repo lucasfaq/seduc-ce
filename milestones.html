@@ -1,0 +1,467 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Milestones - Portal de Obras</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:0; background:#f3f4f6; color:#111827;}
+    .topbar{position: sticky; top: 0; z-index: 99999; background:#111827; color:#fff; padding:12px 18px;}
+    .topbar .left{display:flex; gap:12px; align-items:center;}
+    .topbar .title{font-weight:900;}
+    .menuBtn{background:#fff; color:#111827; border:0; padding:8px 10px; border-radius:10px; font-weight:800; cursor:pointer;}
+    .navDrop{display:none; position: fixed; top: 54px; left: 18px; z-index: 100000; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,.12); border:1px solid #e5e7eb; min-width:200px;}
+    .navDrop a{display:block; padding:10px 12px; text-decoration:none; color:#111827; font-weight:700;}
+    .navDrop a:hover{ background:#f3f4f6; }
+    .wrap{padding:16px 18px;}
+    .cards{display:grid; grid-template-columns:repeat(2, minmax(160px,1fr)); gap:12px; margin-bottom:14px;}
+    .card{background:#fff; border-radius:14px; padding:12px 14px; box-shadow:0 6px 18px rgba(0,0,0,.08);}
+    .card .k{font-size:12px; color:#6b7280;}
+    .card .v{font-size:22px; font-weight:800; margin-top:6px;}
+    .filters{display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 14px;}
+    .filters input, .filters select{border:1px solid #d1d5db; border-radius:10px; padding:10px 12px; background:#fff;}
+    .tablewrap{background:#fff; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,.08); overflow:auto;}
+    table{border-collapse:separate; border-spacing:0; width:100%; min-width:1400px;}
+    thead th{position:sticky; top:0; background:#111827; color:#fff; font-size:12px; padding:10px; text-align:left; z-index:2;}
+    tbody td{border-bottom:1px solid #e5e7eb; padding:10px; font-size:12px; vertical-align:top;}
+    .sticky{position:sticky; left:0; background:#fff; z-index:1; min-width:360px;}
+    .u-title{font-weight:800; font-size:13px;}
+    .u-meta{color:#6b7280; margin-top:4px;}
+    .u-link a{display:inline-block; margin-top:6px; font-weight:700; text-decoration:none; color:#2563eb;}
+    .badge{display:inline-block; padding:5px 8px; border-radius:999px; color:#fff; font-weight:700; font-size:11px;}
+    .bar{height:8px; background:#e5e7eb; border-radius:999px; margin-top:10px; overflow:hidden;}
+    .barfill{height:100%; background:#16a34a;}
+    .pct{margin-top:6px; font-weight:800; color:#111827;}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="left">
+      <button class="menuBtn" onclick="toggleNav()">☰ Menu</button>
+      <div class="title">Milestones das Obras</div>
+    </div>
+
+    <div id="navDrop" class="navDrop">
+      <a href="mapa_projeto_escolas.html">🗺️ Mapa</a>
+      <a href="milestones.html">📌 Milestones</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cards">
+      <div class="card"><div class="k">Total de Unidades</div><div class="v">25</div></div>
+      <div class="card"><div class="k">Avanço Médio (etapas)</div><div class="v">23%</div></div>
+    </div>
+
+    <div class="filters">
+      <input id="q" placeholder="Buscar unidade / município / prioridade / status geral..." style="min-width:360px;">
+      <select id="fPri">
+        <option value="">Prioridade (todas)</option>
+        <option value="p1">P1</option><option value="p2">P2</option><option value="p3">P3</option><option value="p4">P4</option><option value="p5">P5</option>
+      </select>
+      <select id="fMun">
+        <option value="">Município (todos)</option>
+      </select>
+      <button onclick="resetFilters()" style="border:1px solid #d1d5db;border-radius:10px;padding:10px 12px;background:#fff;cursor:pointer;">Limpar</button>
+    </div>
+
+    <div class="tablewrap">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th class="sticky">Unidade</th>
+            <th colspan="10">Suprimentos</th>
+            <th colspan="5">Montagem</th>
+          </tr>
+          <tr>
+            <th class="sticky">Resumo</th>
+            <th>Piso Regularizacao</th><th>Telhas Paineis</th><th>Estrutura Metalica</th><th>Placas Cimenticias</th><th>Fixacao Acabamento</th><th>Janelas</th><th>Portas</th><th>Ar Condicionados</th><th>Piso Vinilico</th><th>Rodapes</th>
+            <th>Montagem Blocos</th><th>Montagem Assoalhos</th><th>Montagem Paineis</th><th>Montagem Coberta</th><th>Acabamento Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr data-municipio="acaraú" data-prioridade="p4" data-text="eem tomaz pompeu de sousa brasil acaraú p4 sala de aula 3 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Tomaz Pompeu de Sousa Brasil</div>
+            <div class="u-meta">Acaraú • P4 • Sala De Aula 3</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/V5MJzEiwDjwQxaci6" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="aiuaba" data-prioridade="p4" data-text="eem josé ferreira barbosa aiuaba p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM José Ferreira Barbosa</div>
+            <div class="u-meta">Aiuaba • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/CahYckGKaLYf556z8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="amontada" data-prioridade="p4" data-text="eeep luiz gonzaga f mota amontada p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEEP Luiz Gonzaga F Mota</div>
+            <div class="u-meta">Amontada • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/9Vecd5tyMwtZ6hgW8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="cascavel" data-prioridade="p4" data-text="eemti marconi coelho reis cascavel p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEMTI Marconi Coelho Reis</div>
+            <div class="u-meta">Cascavel • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/ZDmre4oFz4TDWAMZ9" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="caucaia " data-prioridade="p4" data-text="eem eliezer de freitas guimarães caucaia  p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Eliezer de Freitas Guimarães</div>
+            <div class="u-meta">Caucaia  • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/i99anLnaJNjFfQmE8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="croatá" data-prioridade="p4" data-text="escola quilombola maria da conceição croatá p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">ESCOLA Quilombola Maria da Conceição</div>
+            <div class="u-meta">Croatá • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/41rqMZ9hcdD3pE7g7" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="eusébio" data-prioridade="p4" data-text="eem ana bezerra de sá eusébio p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Ana Bezerra de Sá</div>
+            <div class="u-meta">Eusébio • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/sZu1yKV2T3sLehwQ7" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="fortaleza" data-prioridade="p4" data-text="eeep prof onelio porto fortaleza p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEEP Prof Onelio Porto</div>
+            <div class="u-meta">Fortaleza • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/UDGLjdLvacXadzKR8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="fortaleza" data-prioridade="p4" data-text="eeep icaro de sousa moreira fortaleza p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEEP Icaro de Sousa Moreira</div>
+            <div class="u-meta">Fortaleza • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/UZ5hJzXVB8iTxW6n8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="fortim" data-prioridade="p4" data-text="eem helenita lopes gurgel valente fortim p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Helenita Lopes Gurgel Valente</div>
+            <div class="u-meta">Fortim • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/LmmRfM5C5YDXbPbX8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="granja" data-prioridade="p4" data-text="eemti são josé granja p4 sala de aula pe suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEMTI São José</div>
+            <div class="u-meta">Granja • P4 • Sala De Aula PE</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/UuzrjjTsv1t1czzw6" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="itapajé" data-prioridade="p5" data-text="eemti estefânia matos itapajé p5 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEMTI Estefânia Matos</div>
+            <div class="u-meta">Itapajé • P5 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/Kss5XcHm1jRVCPGK7" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="itarema" data-prioridade="p4" data-text="eem luzia araújo barros itarema p4 cozinha suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Luzia Araújo Barros</div>
+            <div class="u-meta">Itarema • P4 • Cozinha</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/oH3GecsuNGLkgoB46" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="jijoca de jericoacoara" data-prioridade="p5" data-text="eem josé teixeira de albuquerquer jijoca de jericoacoara p5 sala de aula 3 + cozinha suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM José Teixeira de Albuquerquer</div>
+            <div class="u-meta">Jijoca de Jericoacoara • P5 • Sala De Aula 3 + Cozinha</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/zt2Yez2JycvMZhSy9" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="maracanaú" data-prioridade="p5" data-text="liceu professor francisco oscar rodrigues maracanaú p5 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">LICEU Professor Francisco Oscar Rodrigues</div>
+            <div class="u-meta">Maracanaú • P5 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/KTvFCU6ioaYjx4jF8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#f59e0b">EM ANDAMENTO</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="maracanaú" data-prioridade="p4" data-text="eem jose milton de vasconcelos dias maracanaú p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Jose Milton de Vasconcelos Dias</div>
+            <div class="u-meta">Maracanaú • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/chi3TzCEsoUz75p39" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="maranguape" data-prioridade="p5" data-text="eefm luiz girão maranguape p5 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEFM Luiz Girão</div>
+            <div class="u-meta">Maranguape • P5 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/Nk6zi87Zes95sUAZA" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="mombaça" data-prioridade="p4" data-text="eem professor ananias do amaral vieira mombaça p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Professor Ananias do Amaral Vieira</div>
+            <div class="u-meta">Mombaça • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/6GgcBJujDvf7wPsy7" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="pacajus" data-prioridade="p4" data-text="eem dione maria bezerra pessoa pacajus p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Dione Maria Bezerra Pessoa</div>
+            <div class="u-meta">Pacajus • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/q5dvjpkvVnF5K99m7" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="pacatuba" data-prioridade="p5" data-text="escola fausto aguiar arruda pacatuba p5 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">Escola Fausto Aguiar Arruda</div>
+            <div class="u-meta">Pacatuba • P5 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 20%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/BYYPaL7E8HrUzkXN9" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:20%"></div></div>
+            <div class="pct">20%</div>
+          </td>
+          <td><span class="badge" style="background:#f59e0b">EM ANDAMENTO</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="russas" data-prioridade="p4" data-text="eem manuel matoso filho russas p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Manuel Matoso Filho</div>
+            <div class="u-meta">Russas • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/Dyh5HweNCuBpojc46" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="são benedito" data-prioridade="p4" data-text="eem dep tomaz brandão são benedito p4 cozinha suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM DEP Tomaz Brandão</div>
+            <div class="u-meta">São Benedito • P4 • Cozinha</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/Ppekz2siS488GyWR6" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="senador sá" data-prioridade="p5" data-text="eefm coronel apoliano senador sá p5 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEFM Coronel Apoliano</div>
+            <div class="u-meta">Senador Sá • P5 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/LuYoJJF93knWeg6G6" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="tianguá" data-prioridade="p4" data-text="eem miguel carneiro da cunha tianguá p4 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEM Miguel Carneiro da Cunha</div>
+            <div class="u-meta">Tianguá • P4 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/wahWorNS6casN8UX6" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        <tr data-municipio="ubajara" data-prioridade="p5" data-text="eeep gov waldemar alcantara ubajara p5 sala de aula 4 suprimentos">
+          <td class="sticky">
+            <div class="u-title">EEEP Gov Waldemar Alcantara</div>
+            <div class="u-meta">Ubajara • P5 • Sala De Aula 4</div>
+            <div class="u-meta"><b>Status Geral:</b> Suprimentos • <b>%:</b> 25%</div>
+            <div class="u-link"><a href="https://maps.app.goo.gl/oS8Z835yVtPSAzhm8" target="_blank" rel="noopener">Mapa</a></div>
+            <div class="bar"><div class="barfill" style="width:25%"></div></div>
+            <div class="pct">25%</div>
+          </td>
+          <td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#16a34a">OK</span></td><td><span class="badge" style="background:#16a34a">OK</span></td>
+          <td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td><td><span class="badge" style="background:#dc2626">PENDENTE</span></td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const q = document.getElementById('q');
+    const fPri = document.getElementById('fPri');
+    const fMun = document.getElementById('fMun');
+    const rows = Array.from(document.querySelectorAll('#tbl tbody tr'));
+
+    const munSet = new Set(rows.map(r => r.dataset.municipio).filter(Boolean));
+    Array.from(munSet).sort().forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+      fMun.appendChild(opt);
+    });
+
+    function applyFilters(){
+      const qq = (q.value || '').trim().toLowerCase();
+      const pri = (fPri.value || '').trim().toLowerCase();
+      const mun = (fMun.value || '').trim().toLowerCase();
+
+      rows.forEach(r => {
+        const okText = !qq || r.dataset.text.includes(qq);
+        const okPri = !pri || (r.dataset.prioridade && r.dataset.prioridade.toLowerCase().includes(pri));
+        const okMun = !mun || (r.dataset.municipio === mun);
+        r.style.display = (okText && okPri && okMun) ? '' : 'none';
+      });
+    }
+
+    function resetFilters(){
+      q.value = '';
+      fPri.value = '';
+      fMun.value = '';
+      applyFilters();
+    }
+
+    q.addEventListener('input', applyFilters);
+    fPri.addEventListener('change', applyFilters);
+    fMun.addEventListener('change', applyFilters);
+
+    applyFilters();
+    function toggleNav(){
+      const d = document.getElementById('navDrop');
+      d.style.display = (d.style.display === 'block') ? 'none' : 'block';
+    }
+window.addEventListener('click', function(e){
+  const drop = document.getElementById('navDrop');
+  if(!drop) return;
+  if(!e.target.closest('.topbar') && !e.target.closest('#navDrop')){
+    drop.style.display = 'none';
+  }
+});
+  </script>
+</body>
+</html>
